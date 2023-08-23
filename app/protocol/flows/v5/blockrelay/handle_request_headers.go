@@ -1,13 +1,13 @@
 package blockrelay
 
 import (
-	"github.com/kaspanet/kaspad/app/protocol/peer"
-	"github.com/kaspanet/kaspad/app/protocol/protocolerrors"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/app/protocol/peer"
+	"github.com/c4ei/yunseokyeol/app/protocol/protocolerrors"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/domain"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/domain"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 )
 
 // This constant must be equal at both syncer and syncee. Therefore, never (!!) change this constant unless a new p2p

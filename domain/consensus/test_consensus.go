@@ -3,16 +3,17 @@ package consensus
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/hashset"
-	"github.com/kaspanet/kaspad/util/staging"
 	"io"
 
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/model/testapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/dagconfig"
-	"github.com/kaspanet/kaspad/infrastructure/db/database"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/hashset"
+	"github.com/c4ei/yunseokyeol/util/staging"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/testapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/yunseokyeol/infrastructure/db/database"
 	"github.com/pkg/errors"
 )
 

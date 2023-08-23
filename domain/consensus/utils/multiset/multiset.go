@@ -1,9 +1,9 @@
 package multiset
 
 import (
-	"github.com/kaspanet/go-muhash"
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
+	"github.com/c4ei/go-muhash"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 	"github.com/pkg/errors"
 )
 

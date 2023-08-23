@@ -4,18 +4,19 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/kaspanet/kaspad/domain"
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
-	"github.com/kaspanet/kaspad/domain/miningmanager/mempool"
-	"github.com/kaspanet/kaspad/infrastructure/db/database/ldb"
 	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/c4ei/yunseokyeol/domain"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
+	"github.com/c4ei/yunseokyeol/infrastructure/db/database/ldb"
 )
 
 func TestCreateStagingConsensus(t *testing.T) {

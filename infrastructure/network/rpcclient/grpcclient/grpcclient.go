@@ -2,15 +2,16 @@ package grpcclient
 
 import (
 	"context"
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/server/grpcserver"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/server/grpcserver/protowire"
+	"io"
+	"time"
+
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver/protowire"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/encoding/gzip"
-	"io"
-	"time"
 )
 
 // OnErrorHandler defines a handler function for when errors occur

@@ -1,11 +1,11 @@
 package transactionvalidator
 
 import (
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/ruleerrors"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/subnetworks"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/ruleerrors"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
 	"github.com/pkg/errors"
 )
 
@@ -67,8 +67,8 @@ func (v *transactionValidator) checkTransactionAmountRanges(tx *externalapi.Doma
 	// output must not be negative or more than the max allowed per
 	// transaction. Also, the total of all outputs must abide by the same
 	// restrictions. All amounts in a transaction are in a unit value known
-	// as a sompi. One kaspa is a quantity of sompi as defined by the
-	// sompiPerKaspa constant.
+	// as a sompi. One c4ex is a quantity of sompi as defined by the
+	// sompiPerC4ex constant.
 	var totalSompi uint64
 	for _, txOut := range tx.Outputs {
 		sompi := txOut.Value
@@ -82,7 +82,7 @@ func (v *transactionValidator) checkTransactionAmountRanges(tx *externalapi.Doma
 		}
 
 		// Binary arithmetic guarantees that any overflow is detected and reported.
-		// This is impossible for Kaspa, but perhaps possible if an alt increases
+		// This is impossible for C4ex, but perhaps possible if an alt increases
 		// the total money supply.
 		newTotalSompi := totalSompi + sompi
 		if newTotalSompi < totalSompi {

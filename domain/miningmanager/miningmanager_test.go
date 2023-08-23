@@ -1,28 +1,29 @@
 package miningmanager_test
 
 import (
-	"github.com/kaspanet/kaspad/cmd/kaspawallet/libkaspawallet"
-	"github.com/kaspanet/kaspad/domain/consensusreference"
-	"github.com/kaspanet/kaspad/domain/miningmanager/model"
-	"github.com/kaspanet/kaspad/util"
-	"github.com/kaspanet/kaspad/version"
 	"reflect"
 	"strings"
 	"testing"
 
-	"github.com/kaspanet/kaspad/domain/miningmanager/mempool"
+	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/yunseokyeol/domain/consensusreference"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager/model"
+	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/yunseokyeol/version"
 
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/model/testapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/subnetworks"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/transactionhelper"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/txscript"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/utxo"
-	"github.com/kaspanet/kaspad/domain/miningmanager"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/testapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager"
 	"github.com/pkg/errors"
 )
 
@@ -819,7 +820,7 @@ func generateNewCoinbase(addressPrefix util.Bech32Prefix, op opType) (*externala
 			ExtraData:       nil,
 		}, nil
 	}
-	_, publicKey, err := libkaspawallet.CreateKeyPair(op == opECDSA)
+	_, publicKey, err := libc4exwallet.CreateKeyPair(op == opECDSA)
 	if err != nil {
 		return nil, err
 	}

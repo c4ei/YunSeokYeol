@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/kaspanet/kaspad/cmd/kaspawallet/libkaspawallet"
-	"github.com/kaspanet/kaspad/util"
+
+	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/yunseokyeol/util"
 )
 
 func main() {
@@ -12,7 +13,7 @@ func main() {
 		panic(err)
 	}
 
-	privateKey, publicKey, err := libkaspawallet.CreateKeyPair(false)
+	privateKey, publicKey, err := libc4exwallet.CreateKeyPair(false)
 	if err != nil {
 		panic(err)
 	}

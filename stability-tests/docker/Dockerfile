@@ -1,14 +1,14 @@
-ARG KASPAD_IMAGE
-ARG KASPAMINER_IMAGE
+ARG C4exD_IMAGE
+ARG C4exMINER_IMAGE
 
-FROM ${KASPAD_IMAGE} as kaspad
-FROM ${KASPAMINER_IMAGE} as kaspaminer
+FROM ${C4exD_IMAGE} as c4exd
+FROM ${C4exMINER_IMAGE} as c4exminer
 
 FROM golang:1.19-alpine
 
-RUN mkdir -p /go/src/github.com/kaspanet/kaspad
+RUN mkdir -p /go/src/github.com/c4ei/c4exd
 
-WORKDIR /go/src/github.com/kaspanet/kaspad
+WORKDIR /go/src/github.com/c4ei/c4exd
 
 RUN apk add bash build-base git
 
@@ -19,11 +19,11 @@ RUN go mod download
 
 COPY . .
 
-COPY --from=kaspad /app/ /app/
-COPY --from=kaspaminer /app/ /app/
+COPY --from=c4exd /app/ /app/
+COPY --from=c4exminer /app/ /app/
 ENV PATH="/app:${PATH}"
 
-WORKDIR /go/src/github.com/kaspanet/kaspad/stability-tests
+WORKDIR /go/src/github.com/c4ei/yunseokyeol/stability-tests
 
 RUN go install ./...
 

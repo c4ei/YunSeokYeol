@@ -3,14 +3,14 @@ package rpccontext
 import (
 	"sync"
 
-	"github.com/kaspanet/kaspad/domain/dagconfig"
+	"github.com/c4ei/yunseokyeol/domain/dagconfig"
 
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/txscript"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/domain/utxoindex"
-	routerpkg "github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/domain/utxoindex"
+	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 	"github.com/pkg/errors"
 )
 
@@ -21,7 +21,7 @@ type NotificationManager struct {
 	params    *dagconfig.Params
 }
 
-// UTXOsChangedNotificationAddress represents a kaspad address.
+// UTXOsChangedNotificationAddress represents a c4exd address.
 // This type is meant to be used in UTXOsChanged notifications
 type UTXOsChangedNotificationAddress struct {
 	Address               string

@@ -1,15 +1,16 @@
 package coinbasemanager
 
 import (
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/hashset"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/subnetworks"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/transactionhelper"
-	"github.com/kaspanet/kaspad/infrastructure/db/database"
-	"github.com/pkg/errors"
 	"math"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/hashset"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/yunseokyeol/infrastructure/db/database"
+	"github.com/pkg/errors"
 )
 
 type coinbaseManager struct {

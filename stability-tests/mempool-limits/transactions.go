@@ -5,23 +5,23 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kaspanet/go-secp256k1"
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/subnetworks"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/transactionhelper"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/txscript"
-	utxopkg "github.com/kaspanet/kaspad/domain/consensus/utils/utxo"
-	"github.com/kaspanet/kaspad/domain/dagconfig"
-	"github.com/kaspanet/kaspad/infrastructure/network/rpcclient"
-	"github.com/kaspanet/kaspad/stability-tests/common/mine"
-	"github.com/kaspanet/kaspad/util"
+	"github.com/c4ei/go-secp256k1"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
+	utxopkg "github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
+	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/rpcclient"
+	"github.com/c4ei/yunseokyeol/stability-tests/common/mine"
+	"github.com/c4ei/yunseokyeol/util"
 )
 
 const (
-	payAddress                       = "kaspasim:qzuax2jhawd354e54thhpd9m9wg03pdzwjlpr4vtq3k7xrpumhhtwa2hkr3ep"
+	payAddress                       = "c4exsim:qzuax2jhawd354e54thhpd9m9wg03pdzwjlpr4vtq3k7xrpumhhtwa2hkr3ep"
 	payAddressPrivateKey             = "05d8f681e954a550395ee2297fc1a14f6e801f554c0b9d48cd7165a7ea72ff77"
 	fundingCoinbaseTransactionAmount = 1000
 	outputsPerTransaction            = 3

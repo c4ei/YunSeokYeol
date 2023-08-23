@@ -1,9 +1,10 @@
 package txscript
 
 import (
-	"github.com/kaspanet/kaspad/infrastructure/logger"
 	"os"
 	"testing"
+
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
 )
 
 func TestMain(m *testing.M) {

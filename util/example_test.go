@@ -2,11 +2,12 @@ package util_test
 
 import (
 	"fmt"
-	"github.com/kaspanet/kaspad/util/difficulty"
 	"math"
 	"math/big"
 
-	"github.com/kaspanet/kaspad/util"
+	"github.com/c4ei/yunseokyeol/util/difficulty"
+
+	"github.com/c4ei/yunseokyeol/util"
 )
 
 func ExampleAmount() {
@@ -57,7 +58,7 @@ func ExampleNewAmount() {
 	// Output: 1 KAS
 	// 0.01234567 KAS
 	// 0 KAS
-	// invalid kaspa amount
+	// invalid c4ex amount
 }
 
 func ExampleAmount_unitConversions() {

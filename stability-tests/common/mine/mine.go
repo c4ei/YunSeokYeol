@@ -6,13 +6,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/model/testapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/mining"
-	"github.com/kaspanet/kaspad/stability-tests/common/rpc"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/testapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/mining"
+	"github.com/c4ei/yunseokyeol/stability-tests/common/rpc"
 	"github.com/pkg/errors"
 )
 
@@ -153,6 +153,7 @@ func mineOrFetchBlock(blockData JSONBlock, mdb *miningDB, testConsensus testapi.
 var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 // SolveBlock increments the given block's nonce until it matches the difficulty requirements in its bits field
+// SolveBlock은 비트 필드의 난이도 요구 사항과 일치할 때까지 주어진 블록의 nonce를 증가시킵니다.
 func SolveBlock(block *externalapi.DomainBlock) {
 	mining.SolveBlock(block, random)
 }

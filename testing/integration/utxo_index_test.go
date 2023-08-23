@@ -4,20 +4,20 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/kaspanet/kaspad/domain/consensus/utils/utxo"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
 
-	"github.com/kaspanet/go-secp256k1"
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/transactionid"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/txscript"
-	"github.com/kaspanet/kaspad/util"
+	"github.com/c4ei/go-secp256k1"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionid"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
+	"github.com/c4ei/yunseokyeol/util"
 )
 
 func TestUTXOIndex(t *testing.T) {
-	// Setup a single kaspad instance
+	// Setup a single c4exd instance
 	harnessParams := &harnessParams{
 		p2pAddress:              p2pAddress1,
 		rpcAddress:              rpcAddress1,
@@ -25,17 +25,17 @@ func TestUTXOIndex(t *testing.T) {
 		miningAddressPrivateKey: miningAddress1PrivateKey,
 		utxoIndex:               true,
 	}
-	kaspad, teardown := setupHarness(t, harnessParams)
+	c4exd, teardown := setupHarness(t, harnessParams)
 	defer teardown()
 
 	// skip the first block because it's paying to genesis script,
 	// which contains no outputs
-	mineNextBlock(t, kaspad)
+	mineNextBlock(t, c4exd)
 
 	// Register for UTXO changes
 	const blockAmountToMine = 100
 	onUTXOsChangedChan := make(chan *appmessage.UTXOsChangedNotificationMessage, blockAmountToMine)
-	err := kaspad.rpcClient.RegisterForUTXOsChangedNotifications([]string{miningAddress1}, func(
+	err := c4exd.rpcClient.RegisterForUTXOsChangedNotifications([]string{miningAddress1}, func(
 		notification *appmessage.UTXOsChangedNotificationMessage) {
 
 		onUTXOsChangedChan <- notification
@@ -46,22 +46,22 @@ func TestUTXOIndex(t *testing.T) {
 
 	// Mine some blocks
 	for i := 0; i < blockAmountToMine; i++ {
-		mineNextBlock(t, kaspad)
+		mineNextBlock(t, c4exd)
 	}
 
 	//check if rewards corrosponds to circulating supply.
-	getCoinSupplyResponse, err := kaspad.rpcClient.GetCoinSupply()
+	getCoinSupplyResponse, err := c4exd.rpcClient.GetCoinSupply()
 	if err != nil {
 		t.Fatalf("Error Retriving Coin supply: %s", err)
 	}
 
-	rewardsMinedSompi := uint64(blockAmountToMine * constants.SompiPerKaspa * 500)
-	getBlockCountResponse, err := kaspad.rpcClient.GetBlockCount()
+	rewardsMinedSompi := uint64(blockAmountToMine * constants.SompiPerC4ex * 500)
+	getBlockCountResponse, err := c4exd.rpcClient.GetBlockCount()
 	if err != nil {
 		t.Fatalf("Error Retriving BlockCount: %s", err)
 	}
 	rewardsMinedViaBlockCountSompi := uint64(
-		(getBlockCountResponse.BlockCount - 2) * constants.SompiPerKaspa * 500, // -2 because of genesis and virtual.
+		(getBlockCountResponse.BlockCount - 2) * constants.SompiPerC4ex * 500, // -2 because of genesis and virtual.
 	)
 
 	if getCoinSupplyResponse.CirculatingSompi != rewardsMinedSompi {
@@ -89,14 +89,14 @@ func TestUTXOIndex(t *testing.T) {
 	const transactionAmountToSpend = 5
 	for i := 0; i < transactionAmountToSpend; i++ {
 		rpcTransaction := buildTransactionForUTXOIndexTest(t, notificationEntries[i])
-		_, err = kaspad.rpcClient.SubmitTransaction(rpcTransaction, false)
+		_, err = c4exd.rpcClient.SubmitTransaction(rpcTransaction, false)
 		if err != nil {
 			t.Fatalf("Error submitting transaction: %s", err)
 		}
 	}
 
 	// Mine a block to include the above transactions
-	mineNextBlock(t, kaspad)
+	mineNextBlock(t, c4exd)
 
 	// Make sure this block removed the UTXOs we spent
 	notification := <-onUTXOsChangedChan
@@ -128,7 +128,7 @@ func TestUTXOIndex(t *testing.T) {
 
 	// Get all the UTXOs and make sure the response is equivalent
 	// to the data collected via notifications
-	utxosByAddressesResponse, err := kaspad.rpcClient.GetUTXOsByAddresses([]string{miningAddress1})
+	utxosByAddressesResponse, err := c4exd.rpcClient.GetUTXOsByAddresses([]string{miningAddress1})
 	if err != nil {
 		t.Fatalf("Failed to get UTXOs: %s", err)
 	}
@@ -184,7 +184,7 @@ func buildTransactionForUTXOIndexTest(t *testing.T, entry *appmessage.UTXOsByAdd
 	txIns := make([]*appmessage.TxIn, 1)
 	txIns[0] = appmessage.NewTxIn(appmessage.NewOutpoint(transactionID, entry.Outpoint.Index), []byte{}, 0, 1)
 
-	payeeAddress, err := util.DecodeAddress(miningAddress1, util.Bech32PrefixKaspaSim)
+	payeeAddress, err := util.DecodeAddress(miningAddress1, util.Bech32PrefixC4exSim)
 	if err != nil {
 		t.Fatalf("Error decoding payeeAddress: %+v", err)
 	}

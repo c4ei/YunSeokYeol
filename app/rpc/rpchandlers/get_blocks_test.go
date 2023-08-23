@@ -5,18 +5,18 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/kaspanet/kaspad/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/app/rpc/rpccontext"
-	"github.com/kaspanet/kaspad/app/rpc/rpchandlers"
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/model/testapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/hashes"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
-	"github.com/kaspanet/kaspad/domain/miningmanager"
-	"github.com/kaspanet/kaspad/infrastructure/config"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/app/rpc/rpccontext"
+	"github.com/c4ei/yunseokyeol/app/rpc/rpchandlers"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/testapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/hashes"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/config"
 )
 
 type fakeDomain struct {

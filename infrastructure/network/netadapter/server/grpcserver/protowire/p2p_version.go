@@ -1,15 +1,15 @@
 package protowire
 
 import (
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/id"
-	"github.com/kaspanet/kaspad/util/mstime"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/id"
+	"github.com/c4ei/yunseokyeol/util/mstime"
 	"github.com/pkg/errors"
 )
 
-func (x *KaspadMessage_Version) toAppMessage() (appmessage.Message, error) {
+func (x *C4exdMessage_Version) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "KaspadMessage_Version is nil")
+		return nil, errors.Wrapf(errorNil, "C4exdMessage_Version is nil")
 	}
 	return x.Version.toAppMessage()
 }
@@ -25,7 +25,7 @@ func (x *VersionMessage) toAppMessage() (appmessage.Message, error) {
 	}
 
 	subnetworkID, err := x.SubnetworkId.toDomain()
-	//  Full kaspa nodes set SubnetworkId==nil
+	//  Full c4ex nodes set SubnetworkId==nil
 	if err != nil && !errors.Is(err, errorNil) {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func (x *VersionMessage) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *KaspadMessage_Version) fromAppMessage(msgVersion *appmessage.MsgVersion) error {
+func (x *C4exdMessage_Version) fromAppMessage(msgVersion *appmessage.MsgVersion) error {
 	err := appmessage.ValidateUserAgent(msgVersion.UserAgent)
 	if err != nil {
 		return err

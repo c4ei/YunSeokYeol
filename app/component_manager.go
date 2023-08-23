@@ -4,25 +4,25 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 
-	"github.com/kaspanet/kaspad/domain/miningmanager/mempool"
+	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
 
-	"github.com/kaspanet/kaspad/app/protocol"
-	"github.com/kaspanet/kaspad/app/rpc"
-	"github.com/kaspanet/kaspad/domain"
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/utxoindex"
-	"github.com/kaspanet/kaspad/infrastructure/config"
-	infrastructuredatabase "github.com/kaspanet/kaspad/infrastructure/db/database"
-	"github.com/kaspanet/kaspad/infrastructure/network/addressmanager"
-	"github.com/kaspanet/kaspad/infrastructure/network/connmanager"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/id"
-	"github.com/kaspanet/kaspad/util/panics"
+	"github.com/c4ei/yunseokyeol/app/protocol"
+	"github.com/c4ei/yunseokyeol/app/rpc"
+	"github.com/c4ei/yunseokyeol/domain"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/utxoindex"
+	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	infrastructuredatabase "github.com/c4ei/yunseokyeol/infrastructure/db/database"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/connmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/id"
+	"github.com/c4ei/yunseokyeol/util/panics"
 )
 
-// ComponentManager is a wrapper for all the kaspad services
+// ComponentManager is a wrapper for all the c4exd services
 type ComponentManager struct {
 	cfg               *config.Config
 	addressManager    *addressmanager.AddressManager
@@ -34,14 +34,14 @@ type ComponentManager struct {
 	started, shutdown int32
 }
 
-// Start launches all the kaspad services.
+// Start launches all the c4exd services.
 func (a *ComponentManager) Start() {
 	// Already started?
 	if atomic.AddInt32(&a.started, 1) != 1 {
 		return
 	}
 
-	log.Trace("Starting kaspad")
+	log.Trace("Starting c4exd")
 
 	err := a.netAdapter.Start()
 	if err != nil {
@@ -51,15 +51,15 @@ func (a *ComponentManager) Start() {
 	a.connectionManager.Start()
 }
 
-// Stop gracefully shuts down all the kaspad services.
+// Stop gracefully shuts down all the c4exd services.
 func (a *ComponentManager) Stop() {
 	// Make sure this only happens once.
 	if atomic.AddInt32(&a.shutdown, 1) != 1 {
-		log.Infof("Kaspad is already in the process of shutting down")
+		log.Infof("C4exd is already in the process of shutting down")
 		return
 	}
 
-	log.Warnf("Kaspad shutting down")
+	log.Warnf("C4exd shutting down")
 
 	a.connectionManager.Stop()
 

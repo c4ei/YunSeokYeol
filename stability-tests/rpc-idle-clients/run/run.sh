@@ -1,32 +1,32 @@
 #!/bin/bash
-rm -rf /tmp/kaspad-temp
+rm -rf /tmp/c4exd-temp
 
 NUM_CLIENTS=128
-kaspad --devnet --appdir=/tmp/kaspad-temp --profile=6061 --rpcmaxwebsockets=$NUM_CLIENTS &
-KASPAD_PID=$!
-KASPAD_KILLED=0
-function killKaspadIfNotKilled() {
-  if [ $KASPAD_KILLED -eq 0 ]; then
-    kill $KASPAD_PID
+c4exd --devnet --appdir=/tmp/c4exd-temp --profile=6061 --rpcmaxwebsockets=$NUM_CLIENTS &
+C4exD_PID=$!
+C4exD_KILLED=0
+function killC4exdIfNotKilled() {
+  if [ $C4exD_KILLED -eq 0 ]; then
+    kill $C4exD_PID
   fi
 }
-trap "killKaspadIfNotKilled" EXIT
+trap "killC4exdIfNotKilled" EXIT
 
 sleep 1
 
 rpc-idle-clients --devnet --profile=7000 -n=$NUM_CLIENTS
 TEST_EXIT_CODE=$?
 
-kill $KASPAD_PID
+kill $C4exD_PID
 
-wait $KASPAD_PID
-KASPAD_EXIT_CODE=$?
-KASPAD_KILLED=1
+wait $C4exD_PID
+C4exD_EXIT_CODE=$?
+C4exD_KILLED=1
 
 echo "Exit code: $TEST_EXIT_CODE"
-echo "Kaspad exit code: $KASPAD_EXIT_CODE"
+echo "C4exd exit code: $C4exD_EXIT_CODE"
 
-if [ $TEST_EXIT_CODE -eq 0 ] && [ $KASPAD_EXIT_CODE -eq 0 ]; then
+if [ $TEST_EXIT_CODE -eq 0 ] && [ $C4exD_EXIT_CODE -eq 0 ]; then
   echo "rpc-idle-clients test: PASSED"
   exit 0
 fi

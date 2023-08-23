@@ -2,7 +2,8 @@ package subnetworks
 
 import (
 	"bytes"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 )
 
 // Less returns true iff id a is less than id b

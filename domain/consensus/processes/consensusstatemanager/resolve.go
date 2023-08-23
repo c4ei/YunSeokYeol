@@ -1,12 +1,13 @@
 package consensusstatemanager
 
 import (
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	"github.com/kaspanet/kaspad/util/staging"
-	"github.com/pkg/errors"
 	"sort"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/yunseokyeol/util/staging"
+	"github.com/pkg/errors"
 )
 
 // tipsInDecreasingGHOSTDAGParentSelectionOrder returns the current DAG tips in decreasing parent selection order.

@@ -1,10 +1,10 @@
 package appmessage
 
 import (
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 )
 
-// MsgRequestIBDChainBlockLocator implements the Message interface and represents a kaspa
+// MsgRequestIBDChainBlockLocator implements the Message interface and represents a c4ex
 // IBDRequestChainBlockLocator message. It is used to request a block locator between low
 // and high hash.
 // The locator is returned via a locator message (MsgIBDChainBlockLocator).

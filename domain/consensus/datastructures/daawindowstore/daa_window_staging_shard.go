@@ -1,10 +1,10 @@
 package daawindowstore
 
 import (
+	"github.com/c4ei/yunseokyeol/domain/consensus/database/serialization"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 	"github.com/golang/protobuf/proto"
-	"github.com/kaspanet/kaspad/domain/consensus/database/serialization"
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
 )
 
 type dbKey struct {

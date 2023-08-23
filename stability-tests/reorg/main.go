@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kaspanet/kaspad/stability-tests/common"
-	"github.com/kaspanet/kaspad/util/profiling"
+	"github.com/c4ei/yunseokyeol/stability-tests/common"
+	"github.com/c4ei/yunseokyeol/util/profiling"
 )
 
 func main() {

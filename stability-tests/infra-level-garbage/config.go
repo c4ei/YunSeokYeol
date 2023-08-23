@@ -4,9 +4,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/kaspanet/kaspad/infrastructure/config"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	"github.com/kaspanet/kaspad/stability-tests/common"
+	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/yunseokyeol/stability-tests/common"
 
 	"github.com/jessevdk/go-flags"
 )

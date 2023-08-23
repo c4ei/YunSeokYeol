@@ -4,12 +4,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	routerpkg "github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
-	"github.com/kaspanet/kaspad/infrastructure/network/rpcclient/grpcclient"
-	"github.com/kaspanet/kaspad/util/panics"
-	"github.com/kaspanet/kaspad/version"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/rpcclient/grpcclient"
+	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/yunseokyeol/version"
 	"github.com/pkg/errors"
 )
 

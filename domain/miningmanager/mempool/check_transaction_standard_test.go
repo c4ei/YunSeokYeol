@@ -9,17 +9,17 @@ import (
 	"math"
 	"testing"
 
-	"github.com/kaspanet/kaspad/domain/consensusreference"
+	"github.com/c4ei/yunseokyeol/domain/consensusreference"
 
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
 
-	"github.com/kaspanet/kaspad/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
 
-	"github.com/kaspanet/kaspad/domain/consensus/utils/constants"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
 
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/txscript"
-	"github.com/kaspanet/kaspad/util"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
+	"github.com/c4ei/yunseokyeol/util"
 	"github.com/pkg/errors"
 )
 
@@ -206,7 +206,7 @@ func TestCheckTransactionStandardInIsolation(t *testing.T) {
 		Sequence:         constants.MaxTxInSequenceNum,
 	}
 	addrHash := [32]byte{0x01}
-	addr, err := util.NewAddressPublicKey(addrHash[:], util.Bech32PrefixKaspaTest)
+	addr, err := util.NewAddressPublicKey(addrHash[:], util.Bech32PrefixC4exTest)
 	if err != nil {
 		t.Fatalf("NewAddressPublicKey: unexpected error: %v", err)
 	}

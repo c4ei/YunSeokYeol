@@ -1,16 +1,17 @@
 package testing
 
 import (
-	"github.com/kaspanet/kaspad/app/protocol/flows/v5/addressexchange"
 	"testing"
 	"time"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	peerpkg "github.com/kaspanet/kaspad/app/protocol/peer"
-	"github.com/kaspanet/kaspad/domain/consensus"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
-	"github.com/kaspanet/kaspad/infrastructure/network/addressmanager"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/protocol/flows/v5/addressexchange"
+
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	peerpkg "github.com/c4ei/yunseokyeol/app/protocol/peer"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 )
 
 type fakeReceiveAddressesContext struct{}

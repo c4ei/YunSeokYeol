@@ -3,18 +3,18 @@ package handshake
 import (
 	"sync/atomic"
 
-	"github.com/kaspanet/kaspad/domain"
+	"github.com/c4ei/yunseokyeol/domain"
 
-	"github.com/kaspanet/kaspad/app/protocol/common"
-	"github.com/kaspanet/kaspad/app/protocol/protocolerrors"
-	"github.com/kaspanet/kaspad/infrastructure/network/addressmanager"
+	"github.com/c4ei/yunseokyeol/app/protocol/common"
+	"github.com/c4ei/yunseokyeol/app/protocol/protocolerrors"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
 
-	"github.com/kaspanet/kaspad/infrastructure/config"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter"
+	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	peerpkg "github.com/kaspanet/kaspad/app/protocol/peer"
-	routerpkg "github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	peerpkg "github.com/c4ei/yunseokyeol/app/protocol/peer"
+	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 	"github.com/pkg/errors"
 )
 

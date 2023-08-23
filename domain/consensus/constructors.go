@@ -1,10 +1,11 @@
 package consensus
 
 import (
-	"github.com/kaspanet/kaspad/domain/consensus/model"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
 	"math/big"
 	"time"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
 )
 
 // GHOSTDAGManagerConstructor is the function signature for a constructor of a type implementing model.GHOSTDAGManager

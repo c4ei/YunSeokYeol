@@ -1,19 +1,20 @@
 package grpcserver
 
 import (
-	"github.com/davecgh/go-spew/spew"
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
 	"io"
 	"os"
 	"strconv"
 	"sync"
 	"time"
 
-	routerpkg "github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/davecgh/go-spew/spew"
+
+	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 	"github.com/pkg/errors"
 
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/server/grpcserver/protowire"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver/protowire"
 )
 
 func (c *gRPCConnection) connectionLoops() error {
@@ -44,7 +45,7 @@ func (c *gRPCConnection) sendLoop() error {
 		}
 
 		blockDelayOnce.Do(func() {
-			experimentalDelayEnv := os.Getenv("KASPA_EXPERIMENTAL_DELAY")
+			experimentalDelayEnv := os.Getenv("C4ex_EXPERIMENTAL_DELAY")
 			if experimentalDelayEnv != "" {
 				blockDelay, err = strconv.Atoi(experimentalDelayEnv)
 				if err != nil {

@@ -1,20 +1,21 @@
 package protocol
 
 import (
-	"github.com/kaspanet/kaspad/app/protocol/common"
-	"github.com/kaspanet/kaspad/app/protocol/flows/ready"
-	"github.com/kaspanet/kaspad/app/protocol/flows/v5"
 	"sync"
 	"sync/atomic"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/app/protocol/flows/handshake"
-	peerpkg "github.com/kaspanet/kaspad/app/protocol/peer"
-	"github.com/kaspanet/kaspad/app/protocol/protocolerrors"
-	"github.com/kaspanet/kaspad/infrastructure/network/addressmanager"
-	"github.com/kaspanet/kaspad/infrastructure/network/connmanager"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter"
-	routerpkg "github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	v5 "github.com/c4ei/c4exd/app/protocol/flows/v5"
+	"github.com/c4ei/yunseokyeol/app/protocol/common"
+	"github.com/c4ei/yunseokyeol/app/protocol/flows/ready"
+
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/app/protocol/flows/handshake"
+	peerpkg "github.com/c4ei/yunseokyeol/app/protocol/peer"
+	"github.com/c4ei/yunseokyeol/app/protocol/protocolerrors"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/connmanager"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter"
+	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 	"github.com/pkg/errors"
 )
 

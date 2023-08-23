@@ -5,13 +5,13 @@
 package txscript
 
 import (
-	"github.com/kaspanet/go-secp256k1"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/go-secp256k1"
+	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
 	"github.com/pkg/errors"
 
-	"github.com/kaspanet/kaspad/domain/dagconfig"
-	"github.com/kaspanet/kaspad/util"
+	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/yunseokyeol/util"
 )
 
 // RawTxInSignature returns the serialized Schnorr signature for the input idx of

@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	"github.com/kaspanet/kaspad/stability-tests/common"
-	"github.com/kaspanet/kaspad/util/panics"
 	"os"
+
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/yunseokyeol/stability-tests/common"
+	"github.com/c4ei/yunseokyeol/util/panics"
 )
 
 var (

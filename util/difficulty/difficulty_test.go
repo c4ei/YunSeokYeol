@@ -2,14 +2,15 @@ package difficulty_test
 
 import (
 	"fmt"
-	"github.com/kaspanet/kaspad/domain/consensus"
 	"math"
 	"math/big"
 	"testing"
 
-	"github.com/kaspanet/kaspad/domain/consensus/utils/testutils"
-	"github.com/kaspanet/kaspad/domain/dagconfig"
-	"github.com/kaspanet/kaspad/util/difficulty"
+	"github.com/c4ei/yunseokyeol/domain/consensus"
+
+	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/yunseokyeol/util/difficulty"
 )
 
 func TestGetHashrateString(t *testing.T) {

@@ -3,16 +3,16 @@ package standalone
 import (
 	"sync"
 
-	"github.com/kaspanet/kaspad/app/protocol/common"
-	"github.com/kaspanet/kaspad/util/mstime"
+	"github.com/c4ei/yunseokyeol/app/protocol/common"
+	"github.com/c4ei/yunseokyeol/util/mstime"
 
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/id"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/id"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
 
-	"github.com/kaspanet/kaspad/infrastructure/config"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter"
+	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter"
 
 	"github.com/pkg/errors"
 )

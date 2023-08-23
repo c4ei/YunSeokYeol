@@ -1,22 +1,22 @@
 package handshake
 
 import (
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/app/protocol/common"
-	peerpkg "github.com/kaspanet/kaspad/app/protocol/peer"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	"github.com/kaspanet/kaspad/infrastructure/network/netadapter/router"
-	"github.com/kaspanet/kaspad/version"
+	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/yunseokyeol/app/protocol/common"
+	peerpkg "github.com/c4ei/yunseokyeol/app/protocol/peer"
+	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
+	"github.com/c4ei/yunseokyeol/version"
 	"github.com/pkg/errors"
 )
 
 var (
 	// userAgentName is the user agent name and is used to help identify
-	// ourselves to other kaspa peers.
-	userAgentName = "kaspad"
+	// ourselves to other c4ex peers.
+	userAgentName = "c4exd"
 
 	// userAgentVersion is the user agent version and is used to help
-	// identify ourselves to other kaspa peers.
+	// identify ourselves to other c4ex peers.
 	userAgentVersion = version.Version()
 
 	// defaultServices describes the default services that are supported by
