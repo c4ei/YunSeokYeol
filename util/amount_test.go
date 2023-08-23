@@ -8,9 +8,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
 
-	. "github.com/c4ei/yunseokyeol/util"
+	. "github.com/c4ei/c4exd/util"
 )
 
 func TestAmountCreation(t *testing.T) {

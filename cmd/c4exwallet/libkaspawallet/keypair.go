@@ -5,10 +5,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/c4ei/go-secp256k1"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/bip32"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/bip32"
+	"github.com/c4ei/c4exd/domain/dagconfig"
+	"github.com/c4ei/c4exd/util"
+	"github.com/kaspanet/go-secp256k1"
 	"github.com/pkg/errors"
 )
 

@@ -3,8 +3,8 @@ package main
 import (
 	"path/filepath"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
-	"github.com/c4ei/yunseokyeol/stability-tests/common"
+	"github.com/c4ei/c4exd/infrastructure/config"
+	"github.com/c4ei/c4exd/stability-tests/common"
 
 	"github.com/jessevdk/go-flags"
 )

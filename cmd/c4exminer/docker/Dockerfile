@@ -14,7 +14,7 @@ RUN go mod download
 
 COPY . .
 
-WORKDIR /go/src/github.com/c4ei/yunseokyeol/cmd/c4exminer
+WORKDIR /go/src/github.com/c4ei/c4exd/cmd/c4exminer
 RUN GOOS=linux go build -a -installsuffix cgo -o c4exminer .
 
 # --- multistage docker build: stage #2: runtime image
@@ -23,7 +23,7 @@ WORKDIR /app
 
 RUN apk add --no-cache ca-certificates tini
 
-COPY --from=build /go/src/github.com/c4ei/yunseokyeol/cmd/c4exminer/c4exminer /app/
+COPY --from=build /go/src/github.com/c4ei/c4exd/cmd/c4exminer/c4exminer /app/
 
 USER nobody
 ENTRYPOINT [ "/sbin/tini", "--" ]

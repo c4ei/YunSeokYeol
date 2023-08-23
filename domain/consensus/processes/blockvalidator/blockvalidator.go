@@ -4,11 +4,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/util/txmass"
+	"github.com/c4ei/c4exd/util/txmass"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/util/difficulty"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/util/difficulty"
 )
 
 // blockValidator exposes a set of validation classes, after which

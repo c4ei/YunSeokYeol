@@ -5,10 +5,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/util"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/logger"
-	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/c4exd/infrastructure/logger"
+	"github.com/c4ei/c4exd/util/panics"
 )
 
 var (

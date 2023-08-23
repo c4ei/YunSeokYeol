@@ -5,9 +5,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver/protowire"
-	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/server"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/server/grpcserver/protowire"
+	"github.com/c4ei/c4exd/util/panics"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/encoding/gzip"

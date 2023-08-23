@@ -1,6 +1,6 @@
 package model
 
-import "github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
 // PruningManager resolves and manages the current pruning point
 type PruningManager interface {

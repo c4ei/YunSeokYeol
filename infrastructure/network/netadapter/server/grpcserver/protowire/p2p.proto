@@ -1,7 +1,7 @@
 syntax = "proto3";
 package protowire;
 
-option go_package = "github.com/c4ei/yunseokyeol/protowire";
+option go_package = "github.com/c4ei/c4exd/protowire";
 
 message RequestAddressesMessage{
   bool includeAllSubnetworks = 1;

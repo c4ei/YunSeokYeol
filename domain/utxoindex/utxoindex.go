@@ -3,10 +3,10 @@ package utxoindex
 import (
 	"sync"
 
-	"github.com/c4ei/yunseokyeol/domain"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/infrastructure/db/database"
-	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/c4exd/domain"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/infrastructure/db/database"
+	"github.com/c4ei/c4exd/infrastructure/logger"
 )
 
 // UTXOIndex maintains an index between transaction scriptPublicKeys

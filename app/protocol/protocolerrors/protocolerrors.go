@@ -1,7 +1,7 @@
 package protocolerrors
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/ruleerrors"
+	"github.com/c4ei/c4exd/domain/consensus/ruleerrors"
 	"github.com/pkg/errors"
 )
 

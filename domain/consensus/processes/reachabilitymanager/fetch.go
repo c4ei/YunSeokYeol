@@ -1,10 +1,10 @@
 package reachabilitymanager
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/database"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/reachabilitydata"
+	"github.com/c4ei/c4exd/domain/consensus/database"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/reachabilitydata"
 	"github.com/pkg/errors"
 )
 

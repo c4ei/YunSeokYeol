@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/client"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/client"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
 	"github.com/pkg/errors"
 )
 

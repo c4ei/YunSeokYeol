@@ -1,8 +1,8 @@
 package database
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/infrastructure/db/database"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/infrastructure/db/database"
 	"github.com/pkg/errors"
 )
 

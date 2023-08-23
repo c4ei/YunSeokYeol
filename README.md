@@ -55,7 +55,7 @@ Join our discord server using the following link: https://discord.gg/YNYnNN5Pf2
 
 ## Issue Tracker
 
-The [integrated github issue tracker](https://github.com/c4ei/yunseokyeol/issues)
+The [integrated github issue tracker](https://github.com/c4ei/c4exd/issues)
 is used for this project.
 
 Issue priorities may be seen at https://github.com/orgs/c4exnet/projects/4

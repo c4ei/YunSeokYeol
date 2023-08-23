@@ -7,13 +7,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/mining"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/mining"
 
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/c4exd/app/appmessage"
 )
 
 func TestIBD(t *testing.T) {

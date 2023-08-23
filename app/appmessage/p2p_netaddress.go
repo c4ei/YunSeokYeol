@@ -7,7 +7,7 @@ package appmessage
 import (
 	"net"
 
-	"github.com/c4ei/yunseokyeol/util/mstime"
+	"github.com/c4ei/c4exd/util/mstime"
 )
 
 // NetAddress defines information about a peer on the network including the time

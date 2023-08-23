@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/utils"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/utils"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 	"github.com/pkg/errors"
 	"github.com/tyler-smith/go-bip39"
 )

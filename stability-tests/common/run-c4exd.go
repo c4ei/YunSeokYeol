@@ -7,7 +7,7 @@ import (
 	"syscall"
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 )
 
 // RunC4exdForTesting runs c4exd for testing purposes

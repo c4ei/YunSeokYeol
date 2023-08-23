@@ -5,8 +5,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/c4ei/yunseokyeol/stability-tests/common"
-	"github.com/c4ei/yunseokyeol/stability-tests/common/mine"
+	"github.com/c4ei/c4exd/stability-tests/common"
+	"github.com/c4ei/c4exd/stability-tests/common/mine"
 	"github.com/pkg/errors"
 )
 

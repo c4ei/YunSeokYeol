@@ -3,9 +3,9 @@ package serialization
 import (
 	"math"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/serialization/protoserialization"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/serialization/protoserialization"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
 	"github.com/pkg/errors"
 	"google.golang.org/protobuf/proto"
 )

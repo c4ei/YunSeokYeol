@@ -1,6 +1,6 @@
 package protowire
 
-import "github.com/c4ei/yunseokyeol/app/appmessage"
+import "github.com/c4ei/c4exd/app/appmessage"
 
 func (x *C4exdMessage_UnexpectedPruningPoint) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.MsgUnexpectedPruningPoint{}, nil

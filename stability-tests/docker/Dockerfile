@@ -23,7 +23,7 @@ COPY --from=c4exd /app/ /app/
 COPY --from=c4exminer /app/ /app/
 ENV PATH="/app:${PATH}"
 
-WORKDIR /go/src/github.com/c4ei/yunseokyeol/stability-tests
+WORKDIR /go/src/github.com/c4ei/c4exd/stability-tests
 
 RUN go install ./...
 

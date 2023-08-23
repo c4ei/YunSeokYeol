@@ -3,7 +3,7 @@ package reachabilitymanager
 import (
 	"math"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model"
 	"github.com/pkg/errors"
 )
 

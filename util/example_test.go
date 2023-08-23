@@ -5,9 +5,9 @@ import (
 	"math"
 	"math/big"
 
-	"github.com/c4ei/yunseokyeol/util/difficulty"
+	"github.com/c4ei/c4exd/util/difficulty"
 
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/util"
 )
 
 func ExampleAmount() {

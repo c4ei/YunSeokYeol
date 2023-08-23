@@ -7,7 +7,7 @@ package addressmanager
 import (
 	"net"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/c4exd/app/appmessage"
 )
 
 var (

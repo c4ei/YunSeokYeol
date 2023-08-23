@@ -1,6 +1,6 @@
 package model
 
-import "github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
 // PastMedianTimeManager provides a method to resolve the
 // past median time of a block

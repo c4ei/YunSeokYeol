@@ -1,9 +1,9 @@
 package rejects
 
 import (
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/app/protocol/protocolerrors"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/app/protocol/protocolerrors"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/router"
 )
 
 // HandleRejectsContext is the interface for the context needed for the HandleRejects flow.

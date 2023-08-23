@@ -1,10 +1,10 @@
 package finalitystore
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/lrucache"
-	"github.com/c4ei/yunseokyeol/util/staging"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/lrucache"
+	"github.com/c4ei/c4exd/util/staging"
 )
 
 var bucketName = []byte("finality-points")

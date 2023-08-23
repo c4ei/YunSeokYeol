@@ -7,12 +7,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/config"
 
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/util"
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/version"
+	"github.com/c4ei/c4exd/version"
 	"github.com/jessevdk/go-flags"
 )
 

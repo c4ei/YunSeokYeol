@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	utilMath "github.com/c4ei/yunseokyeol/util/math"
+	utilMath "github.com/c4ei/c4exd/util/math"
 )
 
 const (

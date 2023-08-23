@@ -3,7 +3,7 @@ package appmessage
 import (
 	"math/big"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 // MsgBlockWithTrustedData represents a c4ex BlockWithTrustedData message

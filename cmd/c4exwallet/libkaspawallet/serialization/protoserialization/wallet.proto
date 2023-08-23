@@ -1,7 +1,7 @@
 syntax = "proto3";
 package protoserialization;
 
-option go_package = "github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/serialization/protoserialization";
+option go_package = "github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/serialization/protoserialization";
 
 message PartiallySignedTransaction{
   TransactionMessage tx = 1;

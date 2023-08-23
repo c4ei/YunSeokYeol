@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb";
+option go_package = "github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb";
 package c4exwalletd;
 
 service c4exwalletd {

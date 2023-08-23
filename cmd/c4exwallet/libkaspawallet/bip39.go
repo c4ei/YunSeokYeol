@@ -3,8 +3,8 @@ package libc4exwallet
 import (
 	"fmt"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/bip32"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/bip32"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 	"github.com/pkg/errors"
 	"github.com/tyler-smith/go-bip39"
 )

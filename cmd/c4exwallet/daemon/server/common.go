@@ -1,6 +1,6 @@
 package server
 
-import "github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
 type walletUTXO struct {
 	Outpoint  *externalapi.DomainOutpoint

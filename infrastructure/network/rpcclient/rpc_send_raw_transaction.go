@@ -1,7 +1,7 @@
 package rpcclient
 
 import (
-	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/c4exd/app/appmessage"
 )
 
 // SubmitTransaction sends an RPC request respective to the function's name and returns the RPC server's response

@@ -3,8 +3,8 @@ package common
 import (
 	"time"
 
-	peerpkg "github.com/c4ei/yunseokyeol/app/protocol/peer"
-	routerpkg "github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
+	peerpkg "github.com/c4ei/c4exd/app/protocol/peer"
+	routerpkg "github.com/c4ei/c4exd/infrastructure/network/netadapter/router"
 
 	"github.com/pkg/errors"
 )

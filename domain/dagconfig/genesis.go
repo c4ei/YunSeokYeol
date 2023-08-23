@@ -7,11 +7,11 @@ package dagconfig
 import (
 	"math/big"
 
-	"github.com/c4ei/go-muhash"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/blockheader"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/blockheader"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/utils/transactionhelper"
+	"github.com/kaspanet/go-muhash"
 )
 
 var genesisTxOuts = []*externalapi.DomainTransactionOutput{}

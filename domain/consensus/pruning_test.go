@@ -3,9 +3,9 @@ package consensus_test
 import (
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 )
 
 func TestPruningDepth(t *testing.T) {

@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 // FinalityStore represents a store for finality data

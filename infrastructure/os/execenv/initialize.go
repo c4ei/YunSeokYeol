@@ -5,7 +5,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/os/limits"
+	"github.com/c4ei/c4exd/infrastructure/os/limits"
 )
 
 // Initialize initializes the execution environment required to run c4exd
