@@ -263,7 +263,7 @@ var MainnetParams = Params{
 	DefaultPort: "21001", // 16111 --> 21001
 	DNSSeeds: []string{
 		// This DNS seeder is run by Wolfie
-		"dnsseed.c4ex.net",
+		"dnsseed.c4ei.net",
 		// "mainnet-dnsseed.kas.pa",
 		// This DNS seeder is run by Denis Mashkevich
 		// "mainnet-dnsseed-1.c4exnet.org",
@@ -347,7 +347,7 @@ var TestnetParams = Params{
 	RPCPort:     "22000", // 16210 --> 22000
 	DefaultPort: "22001", // 16211 --> 22001
 	DNSSeeds: []string{
-		"test-dnsseed.c4ex.net",
+		"test-dnsseed.c4ei.net",
 		// "testnet-10-dnsseed.kas.pa",
 		// This DNS seeder is run by Tiram
 		// "seeder1-testnet.c4exd.net",
