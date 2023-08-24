@@ -103,40 +103,40 @@ func TestAmountUnitConversions(t *testing.T) {
 		s         string
 	}{
 		{
-			name:      "MKAS",
+			name:      "MC4X",
 			amount:    Amount(constants.MaxSompi),
-			unit:      AmountMegaKAS,
+			unit:      AmountMegaC4X,
 			converted: 29000,
-			s:         "29000 MKAS",
+			s:         "29000 MC4X",
 		},
 		{
-			name:      "kKAS",
+			name:      "kC4X",
 			amount:    44433322211100,
-			unit:      AmountKiloKAS,
+			unit:      AmountKiloC4X,
 			converted: 444.33322211100,
-			s:         "444.333222111 kKAS",
+			s:         "444.333222111 kC4X",
 		},
 		{
-			name:      "KAS",
+			name:      "C4X",
 			amount:    44433322211100,
-			unit:      AmountKAS,
+			unit:      AmountC4X,
 			converted: 444333.22211100,
-			s:         "444333.222111 KAS",
+			s:         "444333.222111 C4X",
 		},
 		{
-			name:      "mKAS",
+			name:      "mC4X",
 			amount:    44433322211100,
-			unit:      AmountMilliKAS,
+			unit:      AmountMilliC4X,
 			converted: 444333222.11100,
-			s:         "444333222.111 mKAS",
+			s:         "444333222.111 mC4X",
 		},
 		{
 
-			name:      "μKAS",
+			name:      "μC4X",
 			amount:    44433322211100,
-			unit:      AmountMicroKAS,
+			unit:      AmountMicroC4X,
 			converted: 444333222111.00,
-			s:         "444333222111 μKAS",
+			s:         "444333222111 μC4X",
 		},
 		{
 
@@ -152,7 +152,7 @@ func TestAmountUnitConversions(t *testing.T) {
 			amount:    44433322211100,
 			unit:      AmountUnit(-1),
 			converted: 4443332.2211100,
-			s:         "4443332.22111 1e-1 KAS",
+			s:         "4443332.22111 1e-1 C4X",
 		},
 	}
 
@@ -169,18 +169,18 @@ func TestAmountUnitConversions(t *testing.T) {
 			continue
 		}
 
-		// Verify that Amount.ToKAS works as advertised.
-		f1 := test.amount.ToUnit(AmountKAS)
-		f2 := test.amount.ToKAS()
+		// Verify that Amount.ToC4X works as advertised.
+		f1 := test.amount.ToUnit(AmountC4X)
+		f2 := test.amount.ToC4X()
 		if f1 != f2 {
-			t.Errorf("%v: ToKAS does not match ToUnit(AmountKAS): %v != %v", test.name, f1, f2)
+			t.Errorf("%v: ToC4X does not match ToUnit(AmountC4X): %v != %v", test.name, f1, f2)
 		}
 
 		// Verify that Amount.String works as advertised.
-		s1 := test.amount.Format(AmountKAS)
+		s1 := test.amount.Format(AmountC4X)
 		s2 := test.amount.String()
 		if s1 != s2 {
-			t.Errorf("%v: String does not match Format(AmountKAS): %v != %v", test.name, s1, s2)
+			t.Errorf("%v: String does not match Format(AmountC4X): %v != %v", test.name, s1, s2)
 		}
 	}
 }
@@ -193,16 +193,16 @@ func TestAmountMulF64(t *testing.T) {
 		res  Amount
 	}{
 		{
-			name: "Multiply 0.1 KAS by 2",
-			amt:  100e5, // 0.1 KAS
+			name: "Multiply 0.1 C4X by 2",
+			amt:  100e5, // 0.1 C4X
 			mul:  2,
-			res:  200e5, // 0.2 KAS
+			res:  200e5, // 0.2 C4X
 		},
 		{
-			name: "Multiply 0.2 KAS by 0.02",
-			amt:  200e5, // 0.2 KAS
+			name: "Multiply 0.2 C4X by 0.02",
+			amt:  200e5, // 0.2 C4X
 			mul:  1.02,
-			res:  204e5, // 0.204 KAS
+			res:  204e5, // 0.204 C4X
 		},
 		{
 			name: "Round down",
@@ -218,9 +218,9 @@ func TestAmountMulF64(t *testing.T) {
 		},
 		{
 			name: "Multiply by 0.",
-			amt:  1e8, // 1 KAS
+			amt:  1e8, // 1 C4X
 			mul:  0,
-			res:  0, // 0 KAS
+			res:  0, // 0 C4X
 		},
 		{
 			name: "Multiply 1 by 0.5.",

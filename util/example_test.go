@@ -21,9 +21,9 @@ func ExampleAmount() {
 	a = util.Amount(1e5)
 	fmt.Println("100,000 Sompi:", a)
 	// Output:
-	// Zero Sompi: 0 KAS
-	// 100,000,000 Sompi: 1 KAS
-	// 100,000 Sompi: 0.001 KAS
+	// Zero Sompi: 0 C4X
+	// 100,000,000 Sompi: 1 C4X
+	// 100,000 Sompi: 0.001 C4X
 }
 
 func ExampleNewAmount() {
@@ -55,26 +55,26 @@ func ExampleNewAmount() {
 	}
 	fmt.Println(amountNaN) //Output 4
 
-	// Output: 1 KAS
-	// 0.01234567 KAS
-	// 0 KAS
+	// Output: 1 C4X
+	// 0.01234567 C4X
+	// 0 C4X
 	// invalid c4ex amount
 }
 
 func ExampleAmount_unitConversions() {
 	amount := util.Amount(44433322211100)
 
-	fmt.Println("Sompi to kKAS:", amount.Format(util.AmountKiloKAS))
-	fmt.Println("Sompi to KAS:", amount)
-	fmt.Println("Sompi to MilliKAS:", amount.Format(util.AmountMilliKAS))
-	fmt.Println("Sompi to MicroKAS:", amount.Format(util.AmountMicroKAS))
+	fmt.Println("Sompi to kC4X:", amount.Format(util.AmountKiloC4X))
+	fmt.Println("Sompi to C4X:", amount)
+	fmt.Println("Sompi to MilliC4X:", amount.Format(util.AmountMilliC4X))
+	fmt.Println("Sompi to MicroC4X:", amount.Format(util.AmountMicroC4X))
 	fmt.Println("Sompi to Sompi:", amount.Format(util.AmountSompi))
 
 	// Output:
-	// Sompi to kKAS: 444.333222111 kKAS
-	// Sompi to KAS: 444333.222111 KAS
-	// Sompi to MilliKAS: 444333222.111 mKAS
-	// Sompi to MicroKAS: 444333222111 μKAS
+	// Sompi to kC4X: 444.333222111 kC4X
+	// Sompi to C4X: 444333.222111 C4X
+	// Sompi to MilliC4X: 444333222.111 mC4X
+	// Sompi to MicroC4X: 444333222111 μC4X
 	// Sompi to Sompi: 44433322211100 Sompi
 }
 

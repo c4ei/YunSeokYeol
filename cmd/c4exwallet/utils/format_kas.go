@@ -6,8 +6,8 @@ import (
 	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
 )
 
-// FormatKas takes the amount of sompis as uint64, and returns amount of KAS with 8  decimal places
-func FormatKas(amount uint64) string {
+// FormatC4x takes the amount of sompis as uint64, and returns amount of C4X with 8  decimal places
+func FormatC4x(amount uint64) string {
 	res := "                   "
 	if amount > 0 {
 		res = fmt.Sprintf("%19.8f", float64(amount)/constants.SompiPerC4ex)
