@@ -5,25 +5,25 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/domain/consensusreference"
-	"github.com/c4ei/yunseokyeol/domain/miningmanager/model"
-	"github.com/c4ei/yunseokyeol/util"
-	"github.com/c4ei/yunseokyeol/version"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/domain/consensusreference"
+	"github.com/c4ei/c4exd/domain/miningmanager/model"
+	"github.com/c4ei/c4exd/util"
+	"github.com/c4ei/c4exd/version"
 
-	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
+	"github.com/c4ei/c4exd/domain/miningmanager/mempool"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/testapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/transactionhelper"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
-	"github.com/c4ei/yunseokyeol/domain/miningmanager"
+	"github.com/c4ei/c4exd/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/testapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/domain/consensus/utils/transactionhelper"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/miningmanager"
 	"github.com/pkg/errors"
 )
 
@@ -864,7 +864,7 @@ func createTransactionWithUTXOEntry(t *testing.T, i int, daaScore uint64) *exter
 		SignatureScript:  signatureScript,
 		Sequence:         constants.MaxTxInSequenceNum,
 		UTXOEntry: utxo.NewUTXOEntry(
-			100000000, // 1 KAS
+			100000000, // 1 C4X
 			scriptPublicKey,
 			true,
 			daaScore),

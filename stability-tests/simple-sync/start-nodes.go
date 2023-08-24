@@ -7,8 +7,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/stability-tests/common"
-	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/c4exd/stability-tests/common"
+	"github.com/c4ei/c4exd/util/panics"
 	"github.com/pkg/errors"
 )
 

@@ -1,8 +1,8 @@
 package serialization
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
 )
 
 // UTXODiffToDBUTXODiff converts UTXODiff to DbUtxoDiff

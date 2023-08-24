@@ -3,7 +3,7 @@ package protowire
 import (
 	"math"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/c4exd/app/appmessage"
 	"github.com/pkg/errors"
 )
 

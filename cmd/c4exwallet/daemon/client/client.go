@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/server"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/server"
 
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
 	"google.golang.org/grpc"
 )
 

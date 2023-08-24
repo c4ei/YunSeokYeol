@@ -5,7 +5,7 @@
 package appmessage
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 // MsgTransactionNotFound defines a c4ex TransactionNotFound message which is sent in response to

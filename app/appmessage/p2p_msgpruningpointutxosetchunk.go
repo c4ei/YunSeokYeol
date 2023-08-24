@@ -1,6 +1,6 @@
 package appmessage
 
-import "github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
 // MsgPruningPointUTXOSetChunk represents a c4ex PruningPointUTXOSetChunk message
 type MsgPruningPointUTXOSetChunk struct {

@@ -5,22 +5,22 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/c4ei/go-secp256k1"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/client"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/serialization"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/utils"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
-	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
-	"github.com/c4ei/yunseokyeol/util"
-	"github.com/c4ei/yunseokyeol/util/txmass"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/client"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/serialization"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/utils"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/dagconfig"
+	"github.com/c4ei/c4exd/domain/miningmanager/mempool"
+	"github.com/c4ei/c4exd/util"
+	"github.com/c4ei/c4exd/util/txmass"
+	"github.com/kaspanet/go-secp256k1"
 	"github.com/pkg/errors"
 )
 
@@ -116,12 +116,12 @@ func sweep(conf *sweepConfig) error {
 	fmt.Println("\nTransaction ID(s):")
 	for i, txID := range response.TxIDs {
 		fmt.Printf("\t%s\n", txID)
-		fmt.Println("\tSwept:\t", utils.FormatKas(splitTransactions[i].Outputs[0].Value), " KAS")
+		fmt.Println("\tSwept:\t", utils.FormatC4x(splitTransactions[i].Outputs[0].Value), " C4X")
 		totalExtracted = totalExtracted + splitTransactions[i].Outputs[0].Value
 	}
 
 	fmt.Println("\nTotal Funds swept (including transaction fees):")
-	fmt.Println("\t", utils.FormatKas(totalExtracted), " KAS")
+	fmt.Println("\t", utils.FormatC4x(totalExtracted), " C4X")
 
 	return nil
 }

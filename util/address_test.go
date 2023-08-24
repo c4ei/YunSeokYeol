@@ -13,7 +13,7 @@ import (
 
 	"golang.org/x/crypto/blake2b"
 
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/util"
 )
 
 func TestAddresses(t *testing.T) {

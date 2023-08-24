@@ -1,9 +1,9 @@
 package grpcserver
 
 import (
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver/protowire"
-	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/server"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/server/grpcserver/protowire"
+	"github.com/c4ei/c4exd/util/panics"
 )
 
 type rpcServer struct {

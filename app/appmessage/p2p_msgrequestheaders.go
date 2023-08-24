@@ -5,7 +5,7 @@
 package appmessage
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 // MsgRequestHeaders implements the Message interface and represents a c4ex

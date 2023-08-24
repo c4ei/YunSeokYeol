@@ -1,17 +1,17 @@
 package server
 
 import (
-	"github.com/c4ei/go-secp256k1"
+	"github.com/kaspanet/go-secp256k1"
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/serialization"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
-	"github.com/c4ei/yunseokyeol/domain/miningmanager/mempool"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/serialization"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/miningmanager/mempool"
+	"github.com/c4ei/c4exd/util"
 )
 
 // maybeAutoCompoundTransaction checks if a transaction's mass is higher that what is allowed for a standard

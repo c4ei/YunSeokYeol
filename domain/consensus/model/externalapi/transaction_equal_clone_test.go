@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
 )
 
 // Changed fields of a test struct compared to a base test struct marked as "changed" and

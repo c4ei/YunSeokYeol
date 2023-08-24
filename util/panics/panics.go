@@ -7,7 +7,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/logger"
+	"github.com/c4ei/c4exd/infrastructure/logger"
 )
 
 const exitHandlerTimeout = 5 * time.Second

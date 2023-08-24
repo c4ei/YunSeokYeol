@@ -8,11 +8,11 @@ import (
 	"encoding/binary"
 	"strconv"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 const (

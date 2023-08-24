@@ -9,17 +9,17 @@ import (
 	"math"
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensusreference"
+	"github.com/c4ei/c4exd/domain/consensusreference"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/util"
 	"github.com/pkg/errors"
 )
 
@@ -215,7 +215,7 @@ func TestCheckTransactionStandardInIsolation(t *testing.T) {
 		t.Fatalf("PayToAddrScript: unexpected error: %v", err)
 	}
 	dummyTxOut := externalapi.DomainTransactionOutput{
-		Value:           100000000, // 1 KAS
+		Value:           100000000, // 1 C4X
 		ScriptPublicKey: dummyScriptPublicKey,
 	}
 

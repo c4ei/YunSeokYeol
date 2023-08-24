@@ -2,7 +2,7 @@ package winservice
 
 import (
 	"github.com/btcsuite/winsvc/svc"
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/config"
 )
 
 // serviceMain checks whether we're being invoked as a service, and if so uses

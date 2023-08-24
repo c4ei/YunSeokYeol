@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/config"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/network/rpcclient"
+	"github.com/c4ei/c4exd/infrastructure/network/rpcclient"
 )
 
 const rpcTimeout = 10 * time.Second

@@ -1,7 +1,7 @@
 package serialization
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model"
 )
 
 // DomainBlockRelationsToDbBlockRelations converts model.BlockRelations to DbBlockRelations

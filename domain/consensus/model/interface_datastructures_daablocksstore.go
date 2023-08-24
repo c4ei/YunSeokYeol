@@ -1,6 +1,6 @@
 package model
 
-import "github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
 // DAABlocksStore represents a store of ???
 type DAABlocksStore interface {

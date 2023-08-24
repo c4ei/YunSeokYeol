@@ -5,12 +5,12 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/ruleerrors"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/ruleerrors"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
 )
 
 func TestBuildBlockErrorCases(t *testing.T) {

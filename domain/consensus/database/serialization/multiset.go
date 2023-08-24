@@ -1,8 +1,8 @@
 package serialization
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/multiset"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/utils/multiset"
 )
 
 // MultisetToDBMultiset converts Multiset to DbMultiset

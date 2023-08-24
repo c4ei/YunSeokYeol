@@ -6,15 +6,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/dnsseed"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/infrastructure/network/dnsseed"
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
+	"github.com/c4ei/c4exd/infrastructure/network/addressmanager"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/config"
 )
 
 // connectionRequest represents a user request (either through CLI or RPC) to connect to a certain node

@@ -24,8 +24,8 @@ WORKDIR /app
 
 RUN apk add --no-cache ca-certificates tini
 
-COPY --from=build /go/src/github.com/c4ei/yunseokyeol/c4exd /app/
-COPY --from=build /go/src/github.com/c4ei/yunseokyeol/infrastructure/config/sample-c4exd.conf /app/
+COPY --from=build /go/src/github.com/c4ei/c4exd/c4exd /app/
+COPY --from=build /go/src/github.com/c4ei/c4exd/infrastructure/config/sample-c4exd.conf /app/
 
 USER nobody
 ENTRYPOINT [ "/sbin/tini", "--" ]

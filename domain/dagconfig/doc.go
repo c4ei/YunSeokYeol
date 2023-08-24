@@ -27,8 +27,8 @@ variable (either directly, or hidden in a library call).
 		"fmt"
 		"log"
 
-		"github.com/c4ei/yunseokyeol/util"
-		"github.com/c4ei/yunseokyeol/domain/dagconfig"
+		"github.com/c4ei/c4exd/util"
+		"github.com/c4ei/c4exd/domain/dagconfig"
 	)
 
 	var testnet = flag.Bool("testnet", false, "operate on the testnet C4ex network")

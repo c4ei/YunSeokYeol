@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/standalone"
+	"github.com/c4ei/c4exd/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/standalone"
 )
 
 func connectToNode() *standalone.Routes {

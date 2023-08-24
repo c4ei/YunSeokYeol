@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/keys"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/keys"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
 	"github.com/pkg/errors"
 )
 

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
+	"github.com/c4ei/c4exd/domain/dagconfig"
+	"github.com/c4ei/c4exd/infrastructure/config"
 )
 
 const (

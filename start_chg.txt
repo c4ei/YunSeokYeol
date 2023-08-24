@@ -9,5 +9,11 @@ var MainnetParams = Params{
 	DefaultPort: "21001", // 16111 --> 21001
 	DNSSeeds: []string{
 		// This DNS seeder is run by Wolfie
-		"dnsseed.c4ex.net",
+		"dnsseed.c4ei.net",
 	},
+
+
+
+https://github.com/c4ei/c4exp
+
+go mod tidy

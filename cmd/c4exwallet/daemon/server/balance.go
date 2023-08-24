@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
 )
 
 type balancesType struct{ available, pending uint64 }

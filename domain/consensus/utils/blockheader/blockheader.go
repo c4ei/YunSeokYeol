@@ -3,8 +3,8 @@ package blockheader
 import (
 	"math/big"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/pow"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/pow"
 )
 
 type blockHeader struct {

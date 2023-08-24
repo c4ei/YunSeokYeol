@@ -3,10 +3,10 @@ package server
 import (
 	"context"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/util"
 )
 
 func (s *server) GetExternalSpendableUTXOs(_ context.Context, request *pb.GetExternalSpendableUTXOsRequest) (*pb.GetExternalSpendableUTXOsResponse, error) {

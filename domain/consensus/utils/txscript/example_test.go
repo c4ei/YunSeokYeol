@@ -8,11 +8,11 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/domain/dagconfig"
+	"github.com/c4ei/c4exd/util"
 )
 
 // This example demonstrates creating a script which pays to a c4ex address.

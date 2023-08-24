@@ -1,8 +1,8 @@
 package grpcclient
 
 import (
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/server/grpcserver/protowire"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/server/grpcserver/protowire"
 	"github.com/pkg/errors"
 	"google.golang.org/protobuf/encoding/protojson"
 )

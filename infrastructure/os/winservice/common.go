@@ -1,6 +1,6 @@
 package winservice
 
-import "github.com/c4ei/yunseokyeol/infrastructure/config"
+import "github.com/c4ei/c4exd/infrastructure/config"
 
 // ServiceDescription contains information about a service, needed to administer it
 type ServiceDescription struct {

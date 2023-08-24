@@ -12,7 +12,7 @@ import (
 	"testing"
 	"unicode"
 
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/util"
 )
 
 // TestAppDataDir tests the API for AppDir to ensure it gives expected

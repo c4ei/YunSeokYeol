@@ -3,15 +3,15 @@ package pruningmanager
 import (
 	"sort"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/multiset"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/virtual"
-	"github.com/c4ei/yunseokyeol/infrastructure/db/database"
-	"github.com/c4ei/yunseokyeol/infrastructure/logger"
-	"github.com/c4ei/yunseokyeol/util/staging"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/multiset"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/consensus/utils/virtual"
+	"github.com/c4ei/c4exd/infrastructure/db/database"
+	"github.com/c4ei/c4exd/infrastructure/logger"
+	"github.com/c4ei/c4exd/util/staging"
 	"github.com/pkg/errors"
 )
 

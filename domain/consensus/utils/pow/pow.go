@@ -1,11 +1,11 @@
 package pow
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/hashes"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/serialization"
-	"github.com/c4ei/yunseokyeol/util/difficulty"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/hashes"
+	"github.com/c4ei/c4exd/domain/consensus/utils/serialization"
+	"github.com/c4ei/c4exd/util/difficulty"
 
 	"math/big"
 

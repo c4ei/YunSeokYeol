@@ -1,8 +1,8 @@
 package protowire
 
 import (
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 	"github.com/pkg/errors"
 )
 

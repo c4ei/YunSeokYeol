@@ -1,8 +1,8 @@
 package rpc
 
 import (
-	"github.com/c4ei/yunseokyeol/infrastructure/logger"
-	"github.com/c4ei/yunseokyeol/util/panics"
+	"github.com/c4ei/c4exd/infrastructure/logger"
+	"github.com/c4ei/c4exd/util/panics"
 )
 
 // log is a logger that is initialized with no output filters. This

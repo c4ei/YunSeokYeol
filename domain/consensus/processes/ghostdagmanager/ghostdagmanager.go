@@ -1,8 +1,8 @@
 package ghostdagmanager
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
 )
 
 // ghostdagManager resolves and manages GHOSTDAG block data

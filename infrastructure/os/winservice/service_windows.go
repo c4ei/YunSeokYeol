@@ -9,9 +9,9 @@ import (
 
 	"github.com/btcsuite/winsvc/eventlog"
 	"github.com/btcsuite/winsvc/svc"
-	"github.com/c4ei/yunseokyeol/infrastructure/config"
-	"github.com/c4ei/yunseokyeol/infrastructure/os/signal"
-	"github.com/c4ei/yunseokyeol/version"
+	"github.com/c4ei/c4exd/infrastructure/config"
+	"github.com/c4ei/c4exd/infrastructure/os/signal"
+	"github.com/c4ei/c4exd/version"
 )
 
 // Service houses the main service handler which handles all service

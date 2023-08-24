@@ -6,15 +6,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/version"
+	"github.com/c4ei/c4exd/version"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
-	"github.com/c4ei/yunseokyeol/cmd/c4exminer/templatemanager"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/pow"
-	"github.com/c4ei/yunseokyeol/infrastructure/network/netadapter/router"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/app/appmessage"
+	"github.com/c4ei/c4exd/cmd/c4exminer/templatemanager"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/pow"
+	"github.com/c4ei/c4exd/infrastructure/network/netadapter/router"
+	"github.com/c4ei/c4exd/util"
 	"github.com/pkg/errors"
 )
 

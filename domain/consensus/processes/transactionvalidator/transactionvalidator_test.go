@@ -1,21 +1,21 @@
 package transactionvalidator_test
 
 import (
-	"github.com/c4ei/go-secp256k1"
-	"github.com/c4ei/yunseokyeol/domain/consensus"
-	"github.com/c4ei/yunseokyeol/domain/consensus/ruleerrors"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus/ruleerrors"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/util"
+	"github.com/kaspanet/go-secp256k1"
 
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/constants"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/subnetworks"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/constants"
+	"github.com/c4ei/c4exd/domain/consensus/utils/subnetworks"
 	"github.com/pkg/errors"
 )
 
@@ -58,7 +58,7 @@ func TestValidateTransactionInContextAndPopulateFee(t *testing.T) {
 			Sequence:         constants.MaxTxInSequenceNum,
 			SigOpCount:       1,
 			UTXOEntry: utxo.NewUTXOEntry(
-				100_000_000, // 1 KAS
+				100_000_000, // 1 C4X
 				scriptPublicKey,
 				true,
 				uint64(5)),
@@ -68,7 +68,7 @@ func TestValidateTransactionInContextAndPopulateFee(t *testing.T) {
 			SignatureScript:  []byte{},
 			SigOpCount:       1,
 			UTXOEntry: utxo.NewUTXOEntry(
-				100_000_000, // 1 KAS
+				100_000_000, // 1 C4X
 				scriptPublicKey,
 				true,
 				uint64(5)),
@@ -79,7 +79,7 @@ func TestValidateTransactionInContextAndPopulateFee(t *testing.T) {
 			Sequence:         constants.MaxTxInSequenceNum,
 			SigOpCount:       1,
 			UTXOEntry: utxo.NewUTXOEntry(
-				100_000_000, // 1 KAS
+				100_000_000, // 1 C4X
 				scriptPublicKey,
 				true,
 				uint64(6)),
@@ -110,11 +110,11 @@ func TestValidateTransactionInContextAndPopulateFee(t *testing.T) {
 		}
 
 		txOutput := externalapi.DomainTransactionOutput{
-			Value:           100000000, // 1 KAS
+			Value:           100000000, // 1 C4X
 			ScriptPublicKey: scriptPublicKey,
 		}
 		txOutputBigValue := externalapi.DomainTransactionOutput{
-			Value:           200_000_000, // 2 KAS
+			Value:           200_000_000, // 2 C4X
 			ScriptPublicKey: scriptPublicKey,
 		}
 

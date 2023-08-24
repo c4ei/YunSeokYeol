@@ -5,13 +5,13 @@
 package txscript
 
 import (
-	"github.com/c4ei/go-secp256k1"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/kaspanet/go-secp256k1"
 	"github.com/pkg/errors"
 
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/domain/dagconfig"
+	"github.com/c4ei/c4exd/util"
 )
 
 // RawTxInSignature returns the serialized Schnorr signature for the input idx of
@@ -50,7 +50,7 @@ func RawTxInSignatureECDSA(tx *externalapi.DomainTransaction, idx int, hashType 
 	return append(signature.Serialize()[:], byte(hashType)), nil
 }
 
-// SignatureScript creates an input signature script for tx to spend KAS sent
+// SignatureScript creates an input signature script for tx to spend C4X sent
 // from a previous output to the owner of a Schnorr private key. tx must include all
 // transaction inputs and outputs, however txin scripts are allowed to be filled
 // or empty. The returned script is calculated to be used as the idx'th txin
@@ -69,7 +69,7 @@ func SignatureScript(tx *externalapi.DomainTransaction, idx int, hashType consen
 	return NewScriptBuilder().AddData(sig).Script()
 }
 
-// SignatureScriptECDSA creates an input signature script for tx to spend KAS sent
+// SignatureScriptECDSA creates an input signature script for tx to spend C4X sent
 // from a previous output to the owner of an ECDSA private key. tx must include all
 // transaction inputs and outputs, however txin scripts are allowed to be filled
 // or empty. The returned script is calculated to be used as the idx'th txin

@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/util"
 )
 
 func main() {

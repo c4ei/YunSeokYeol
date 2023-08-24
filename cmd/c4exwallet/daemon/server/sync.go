@@ -5,9 +5,9 @@ import (
 	"sort"
 	"time"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
 
-	"github.com/c4ei/yunseokyeol/app/appmessage"
+	"github.com/c4ei/c4exd/app/appmessage"
 	"github.com/pkg/errors"
 )
 

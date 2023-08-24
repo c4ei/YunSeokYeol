@@ -14,7 +14,7 @@ RUN go mod download
 
 COPY . .
 
-WORKDIR /go/src/github.com/c4ei/yunseokyeol/cmd/c4exctl
+WORKDIR /go/src/github.com/c4ei/c4exd/cmd/c4exctl
 
 RUN GOOS=linux go build -a -installsuffix cgo -o c4exctl .
 
@@ -24,7 +24,7 @@ WORKDIR /app
 
 RUN apk add --no-cache ca-certificates tini
 
-COPY --from=build /go/src/github.com/c4ei/yunseokyeol/cmd/c4exctl/c4exctl /app/
+COPY --from=build /go/src/github.com/c4ei/c4exd/cmd/c4exctl/c4exctl /app/
 
 USER nobody
 ENTRYPOINT [ "/sbin/tini", "--" ]

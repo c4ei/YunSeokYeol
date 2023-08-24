@@ -1,9 +1,9 @@
 package blockvalidator
 
 import (
-	"github.com/c4ei/yunseokyeol/domain/consensus/model"
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/ruleerrors"
+	"github.com/c4ei/c4exd/domain/consensus/model"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/ruleerrors"
 	"github.com/pkg/errors"
 )
 

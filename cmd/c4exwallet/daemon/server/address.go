@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/daemon/pb"
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/util"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/daemon/pb"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/util"
 	"github.com/pkg/errors"
 )
 

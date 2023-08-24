@@ -3,7 +3,7 @@ package integration
 import (
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/infrastructure/network/addressmanager"
+	"github.com/c4ei/c4exd/infrastructure/network/addressmanager"
 )
 
 func TestAddressExchange(t *testing.T) {

@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/stability-tests/common"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/stability-tests/common"
 	"github.com/pkg/errors"
 )
 

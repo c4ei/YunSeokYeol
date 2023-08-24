@@ -3,21 +3,21 @@ package server
 import (
 	"testing"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet/serialization"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet/serialization"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/keys"
-	"github.com/c4ei/yunseokyeol/util/txmass"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/keys"
+	"github.com/c4ei/c4exd/util/txmass"
 
-	"github.com/c4ei/yunseokyeol/domain/dagconfig"
+	"github.com/c4ei/c4exd/domain/dagconfig"
 
-	"github.com/c4ei/yunseokyeol/domain/consensus/model/externalapi"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/consensushashing"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/txscript"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/utxo"
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+	"github.com/c4ei/c4exd/domain/consensus/utils/consensushashing"
+	"github.com/c4ei/c4exd/domain/consensus/utils/txscript"
+	"github.com/c4ei/c4exd/domain/consensus/utils/utxo"
 
-	"github.com/c4ei/yunseokyeol/cmd/c4exwallet/libc4exwallet"
-	"github.com/c4ei/yunseokyeol/domain/consensus"
-	"github.com/c4ei/yunseokyeol/domain/consensus/utils/testutils"
+	"github.com/c4ei/c4exd/cmd/c4exwallet/libc4exwallet"
+	"github.com/c4ei/c4exd/domain/consensus"
+	"github.com/c4ei/c4exd/domain/consensus/utils/testutils"
 )
 
 func TestEstimateMassAfterSignatures(t *testing.T) {

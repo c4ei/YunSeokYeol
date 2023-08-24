@@ -62,3 +62,5 @@ testdbs/
 coverage.tmp
 
 start.txt
+
+bin/
