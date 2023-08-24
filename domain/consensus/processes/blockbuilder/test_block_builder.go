@@ -264,6 +264,7 @@ func (bb *testBlockBuilder) BuildUTXOInvalidBlock(parentHashes []*externalapi.Do
 	blueScore := ghostdagData.BlueScore()
 
 	// We use the genesis coinbase so that we'll have something to build merkle root and a new coinbase with
+	// 우리는 머클 루트를 구축할 무언가와 새로운 코인베이스를 갖기 위해 제네시스 코인베이스를 사용합니다.
 	genesisTransactions := bb.testConsensus.DAGParams().GenesisBlock.Transactions
 	genesisCoinbase := genesisTransactions[transactionhelper.CoinbaseTransactionIndex].Clone()
 	binary.LittleEndian.PutUint64(genesisCoinbase.Payload[:8], ghostdagData.BlueScore())

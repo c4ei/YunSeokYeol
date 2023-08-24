@@ -33,6 +33,10 @@ func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond 
 	// a high chance we'll get disconnected from the node, so we make the channel
 	// capacity router.DefaultMaxMessages/2 (we give some slack for getBlockTemplate
 	// requests)
+	// 우리는 router.DefaultMaxMessages 블록을 한 번에 보내고 싶지 않습니다.
+	// 노드와의 연결이 끊어질 가능성이 높으므로 채널을 만듭니다.
+	// 용량 router.DefaultMaxMessages/2(getBlockTemplate에 약간의 여유를 줍니다.
+	// 요청)
 	foundBlockChan := make(chan *externalapi.DomainBlock, router.DefaultMaxMessages/2)
 
 	spawn("templatesLoop", func() {
@@ -47,6 +51,10 @@ func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond 
 		// 1. windowTicker -> makes sure that the last windowSize blocks take at least windowSize*targetBlocksPerSecond.
 		// 2. blockTicker -> makes sure that each block takes at least targetBlocksPerSecond/windowSize.
 		// that way we both allow for fluctuation in block rate but also make sure they're not too big (by an order of magnitude)
+		// 차단율을 제한하기 위해 티커를 사용합니다:
+		// 1. windowTicker -> 마지막 windowSize 블록이 최소한 windowSize*targetBlocksPerSecond를 사용하는지 확인합니다.
+		// 2. blockTicker -> 각 블록이 최소한 targetBlocksPerSecond/windowSize를 사용하는지 확인합니다.
+		// 그런 식으로 우리 둘 다 차단율의 변동을 허용하면서도 너무 크지 않은지 확인합니다(크기순으로).
 		if hasBlockRateTarget {
 			windowRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond / windowSize))
 			blockRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond * windowSize))
@@ -120,8 +128,10 @@ func handleFoundBlock(client *minerClient, block *externalapi.DomainBlock) error
 			return client.Reconnect()
 		}
 		if nativeerrors.Is(err, router.ErrRouteClosed) {
+			// 블록 템플릿을 요청하는 동안 경로가 닫혔습니다.
 			log.Debugf("Got route is closed while requesting block template from %s. "+
 				"The client is most likely reconnecting", client.Address())
+			// 블록을 블록을 요청하는 동안 제자리에 들어가게 되었습니다.
 			return nil
 		}
 		if rejectReason == appmessage.RejectReasonIsInIBD {
@@ -144,6 +154,11 @@ func mineNextBlock(mineWhenNotSynced bool) *externalapi.DomainBlock {
 		// In the rare case where the nonce space is exhausted for a specific
 		// block, it'll keep looping the nonce until a new block template
 		// is discovered.
+		// 각 nonce에 대해 최신 블록을 구축하려고 합니다.
+		// 블록 템플릿.
+		// 특정 항목에 대해 nonce 공간이 소진되는 드문 경우입니다.
+		// 블록, 새 블록 템플릿이 나올 때까지 nonce를 계속 반복합니다.
+		// 발견되었습니다.
 		block, state := getBlockForMining(mineWhenNotSynced)
 		state.Nonce = nonce
 		atomic.AddUint64(&hashesTried, 1)

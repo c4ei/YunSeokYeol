@@ -267,6 +267,11 @@ func (s *server) refreshUTXOs() error {
 	// and not in consensus, and between the calls its spending transaction will be
 	// added to consensus and removed from the mempool, so `getUTXOsByAddressesResponse`
 	// will include an obsolete output.
+	// `GetUTXOsByAddresses`를 호출하기 전에 mempool을 확인하는 것이 중요합니다:
+	// 반대 방향으로 수행하면 출력이 mempool에서 소비될 수 있습니다.
+	// 합의에 있지 않으며 통화 사이에 지출 거래는
+	// 합의에 추가되고 mempool에서 제거되므로 `getUTXOsByAddressesResponse`
+	// 더 이상 사용되지 않는 출력을 포함합니다.
 	mempoolEntriesByAddresses, err := s.rpcClient.GetMempoolEntriesByAddresses(s.addressSet.strings(), true, true)
 	if err != nil {
 		return err
@@ -300,6 +305,7 @@ func (s *server) updateSyncingProgressLog(currProcessedAddresses, currMaxUsedAdd
 		s.maxUsedAddressesForLog = currMaxUsedAddresses
 		if s.isLogFinalProgressLineShown {
 			log.Infof("An additional set of previously used addresses found, processing...")
+			// 이전에 사용된 추가 주소 세트가 발견되었습니다. 처리 중...
 			s.maxProcessedAddressesForLog = 0
 			s.isLogFinalProgressLineShown = false
 		}

@@ -68,6 +68,10 @@ type consensus struct {
 // release the lock each time we resolve 100 blocks.
 // Note: `virtualResolveChunk` should be smaller than `params.FinalityDuration` in order to avoid a situation
 // where UpdatePruningPointByVirtual skips a pruning point.
+// 합의 잠금이 너무 오랫동안 유지되는 상황을 방지하기 위해
+// 100개의 블록을 해결할 때마다 잠금을 해제합니다.
+// 참고: 상황을 방지하려면 `virtualResolveChunk`가 `params.FinalityDuration`보다 작아야 합니다.
+// UpdatePruningPointByVirtual은 가지치기 지점을 건너뜁니다.
 const virtualResolveChunk = 100
 
 func (s *consensus) ValidateAndInsertBlockWithTrustedData(block *externalapi.BlockWithTrustedData, validateUTXO bool) error {
@@ -98,6 +102,9 @@ func (s *consensus) Init(skipAddingGenesis bool) error {
 
 	// There should always be a virtual genesis block. Initially only the genesis points to this block, but
 	// on a node with pruned header all blocks without known parents points to it.
+	// 항상 가상 제네시스 블록이 있어야 합니다. 처음에는 제네시스만 이 블록을 가리키지만
+	// 정리된 헤더가 있는 노드에서 알려진 부모가 없는 모든 블록은 이를 가리킵니다.
+
 	if !exists {
 		s.blockStatusStore.Stage(stagingArea, model.VirtualGenesisBlockHash, externalapi.StatusUTXOValid)
 		err = s.reachabilityManager.Init(stagingArea)
