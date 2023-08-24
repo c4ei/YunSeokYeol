@@ -11,3 +11,9 @@ var MainnetParams = Params{
 		// This DNS seeder is run by Wolfie
 		"dnsseed.c4ei.net",
 	},
+
+
+
+https://github.com/c4ei/c4exp
+
+go mod tidy
