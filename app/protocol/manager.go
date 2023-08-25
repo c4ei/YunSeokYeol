@@ -29,6 +29,7 @@ type Manager struct {
 }
 
 // NewManager creates a new instance of the p2p protocol manager
+// NewManager는 p2p 프로토콜 관리자의 새 인스턴스를 생성합니다.
 func NewManager(cfg *config.Config, domain domain.Domain, netAdapter *netadapter.NetAdapter, addressManager *addressmanager.AddressManager,
 	connectionManager *connmanager.ConnectionManager) (*Manager, error) {
 
@@ -40,8 +41,7 @@ func NewManager(cfg *config.Config, domain domain.Domain, netAdapter *netadapter
 	return &manager, nil
 }
 
-// Close closes the protocol manager and waits until all p2p flows
-// finish.
+// Close closes the protocol manager and waits until all p2p flows finish.
 func (m *Manager) Close() {
 	if !atomic.CompareAndSwapUint32(&m.isClosed, 0, 1) {
 		panic(errors.New("The protocol manager was already closed"))
@@ -57,8 +57,8 @@ func (m *Manager) Peers() []*peerpkg.Peer {
 	return m.context.Peers()
 }
 
-// IBDPeer returns the current IBD peer or null if the node is not
-// in IBD
+// IBDPeer returns the current IBD peer or null if the node is not in IBD
+// IBDPeer는 현재 IBD 피어를 반환하거나 노드가 IBD에 없으면 null을 반환합니다.
 func (m *Manager) IBDPeer() *peerpkg.Peer {
 	return m.context.IBDPeer()
 }

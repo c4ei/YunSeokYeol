@@ -24,12 +24,13 @@ import (
 )
 
 const (
-	// These constants are used by the DNS seed code to pick a random last
-	// seen time.
+	// These constants are used by the DNS seed code to pick a random last seen time.
+	// 이 상수는 DNS 시드 코드에서 마지막으로 본 시간을 무작위로 선택하는 데 사용됩니다.
 	secondsIn3Days int32 = 24 * 60 * 60 * 3
 	secondsIn4Days int32 = 24 * 60 * 60 * 4
 
 	// SubnetworkIDPrefixChar is the prefix of subnetworkID, when building a DNS seed request
+	// SubnetworkIDPrefixChar는 DNS 시드 요청을 작성할 때 subnetworkID의 접두사입니다.
 	SubnetworkIDPrefixChar byte = 'n'
 )
 
@@ -84,6 +85,8 @@ func SeedFromDNS(dagParams *dagconfig.Params, customSeed string, includeAllSubne
 				addresses[i] = appmessage.NewNetAddressTimestamp(
 					// seed with addresses from a time randomly selected
 					// between 3 and 7 days ago.
+					// 무작위로 선택된 시간의 주소를 시드합니다.
+					// 3~7일 전 사이입니다.
 					mstime.Now().Add(-1*time.Second*time.Duration(secondsIn3Days+
 						randSource.Int31n(secondsIn4Days))),
 					peer, uint16(intPort))
@@ -95,6 +98,7 @@ func SeedFromDNS(dagParams *dagconfig.Params, customSeed string, includeAllSubne
 }
 
 // SeedFromGRPC send gRPC request to get list of peers for a given host
+// SeedFromGRPC는 주어진 호스트에 대한 피어 목록을 가져오기 위해 gRPC 요청을 보냅니다.
 func SeedFromGRPC(dagParams *dagconfig.Params, customSeed string, includeAllSubnetworks bool,
 	subnetworkID *externalapi.DomainSubnetworkID, seedFn OnSeed) {
 

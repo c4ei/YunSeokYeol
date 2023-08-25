@@ -1,6 +1,8 @@
 package protowire
 
 import (
+	"fmt"
+
 	"github.com/c4ei/c4exd/app/appmessage"
 	"github.com/pkg/errors"
 )
@@ -26,6 +28,7 @@ func (x *C4exdMessage_GetConnectedPeerInfoResponse) fromAppMessage(message *appm
 		err = &RPCError{Message: message.Error.Message}
 	}
 	infos := make([]*GetConnectedPeerInfoMessage, len(message.Infos))
+	fmt.Printf("line 30 ### rpc_get_connected_peer_info.go fromAppMessage - GetConnectedPeerInfoMessage : %+v\n", infos)
 	for i, info := range message.Infos {
 		infos[i] = &GetConnectedPeerInfoMessage{
 			Id:                        info.ID,

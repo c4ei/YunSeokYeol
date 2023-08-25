@@ -13,6 +13,10 @@ import (
 // orphans collection. This number is an approximation of how
 // many orphans there can possibly be on average. It is based
 // on: 2^orphanResolutionRange * PHANTOM K.
+// maxOrphans는 허용되는 최대 고아 수입니다.
+// 고아 컬렉션. 이 숫자는 대략적인 수치입니다.
+// 평균적으로 많은 고아가 있을 수 있습니다. 그것은 기반
+// 켜짐: 2^orphanResolutionRange * PHANTOM K.
 const maxOrphans = 600
 
 // AddOrphan adds the block to the orphan set
@@ -24,10 +28,11 @@ func (f *FlowContext) AddOrphan(orphanBlock *externalapi.DomainBlock) {
 	f.orphans[*orphanHash] = orphanBlock
 
 	if len(f.orphans) > maxOrphans {
+		// 고아 컬렉션 크기가 초과되었습니다. 무작위 고아 퇴거
 		log.Debugf("Orphan collection size exceeded. Evicting a random orphan")
 		f.evictRandomOrphan()
 	}
-
+	// 부모가 누락된 블록을 받고 고아 풀에 추가됨
 	log.Infof("Received a block with missing parents, adding to orphan pool: %s", orphanHash)
 }
 

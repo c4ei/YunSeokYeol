@@ -52,6 +52,9 @@ type implManager struct {
 // TestGHOSTDAG iterates over several dag simulations, and checks
 // that the blue score, blue set and selected parent of each
 // block are calculated as expected.
+// TestGHOSTDAG는 여러 dag 시뮬레이션을 반복하고 확인합니다.
+// 파란색 점수, 파란색 세트 및 각각의 선택된 상위 항목
+// 블록은 예상대로 계산됩니다.
 func TestGHOSTDAG(t *testing.T) {
 	//NOTE: FOR ADDING/REMOVING AN IMPLEMENTATION CHANGE BELOW:
 	implementationFactories := []implManager{

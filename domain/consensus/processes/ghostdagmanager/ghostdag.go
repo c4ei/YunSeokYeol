@@ -1,6 +1,7 @@
 package ghostdagmanager
 
 import (
+	"fmt"
 	"math/big"
 
 	"github.com/c4ei/c4exd/domain/consensus/model"
@@ -19,6 +20,7 @@ type blockGHOSTDAGData struct {
 }
 
 func (bg *blockGHOSTDAGData) toModel() *externalapi.BlockGHOSTDAGData {
+	fmt.Printf("@@@@ 23 line ghostdag.go toModel() bg.blueScore:%v, bg.blueWork:%v, bg.selectedParent:%v, bg.mergeSetBlues:%v, bg.mergeSetReds:%v, bg.bluesAnticoneSizes:%v\n", bg.blueScore, bg.blueWork, bg.selectedParent, bg.mergeSetBlues, bg.mergeSetReds, bg.bluesAnticoneSizes)
 	return externalapi.NewBlockGHOSTDAGData(bg.blueScore, bg.blueWork, bg.selectedParent, bg.mergeSetBlues, bg.mergeSetReds, bg.bluesAnticoneSizes)
 }
 
@@ -40,6 +42,24 @@ func (bg *blockGHOSTDAGData) toModel() *externalapi.BlockGHOSTDAGData {
 //     BluesAnticoneSizes.
 //
 // For further details see the article https://eprint.iacr.org/2018/104.pdf
+// GHOSTDAG는 GHOSTDAG 프로토콜을 실행하고 주어진 부모에 의해 블록 BlockGHOSTDAGData를 계산합니다.
+// 함수는 다음의 블록을 반복하여 MergeSetBlues를 계산합니다.
+// 선택된 새로운 블록의 안티콘
+// 가장 높은 파란색 점수) 추가하는 경우 newNode.blues에 블록을 추가합니다.
+// MergeSetBlues에는 다음 조건이 위반되지 않습니다.
+//
+// 1) |후보 블록 안티콘 ∩ newBlock 블루 세트| ≤ K
+//
+// 2. blue-set-of-newBlock의 모든 파란색 블록에 대해:
+// |(파란색 블록의 안티콘 ∩ 파란색 세트-newBlock) ∪ {후보 블록}| ≤ K.
+// BluesAnticoneSizes 맵을 유지하여 이 조건을 검증합니다.
+// 영향을 받은 모든 파란색 안티콘 크기를 보유하는 각 블록
+// 새로 추가된 파란색 블록입니다.
+// 따라서 |anticone-of-blue ∩ blue-set-of-newBlock|이 무엇인지 알아보려면 우리는 단지 반복
+// 기존 항목을 찾을 때까지 새 블록의 선택된 상위 체인
+// BluesAnticoneSizes.
+//
+// 자세한 내용은 https://eprint.iacr.org/2018/104.pdf 기사를 참조하세요.
 func (gm *ghostdagManager) GHOSTDAG(stagingArea *model.StagingArea, blockHash *externalapi.DomainHash) error {
 	newBlockData := &blockGHOSTDAGData{
 		blueWork:           new(big.Int),
@@ -143,11 +163,16 @@ func (gm *ghostdagManager) checkBlueCandidate(stagingArea *model.StagingArea, ne
 	// of blueCandidate, and check for each one of them if blueCandidate potentially
 	// enlarges their blue anticone to be over K, or that they enlarge the blue anticone
 	// of blueCandidate to be over K.
+	// 과거에 있지 않은 파란색 newNode 세트의 모든 블록을 반복합니다.
+	// blueCandidate의 경우 blueCandidate가 잠재적으로 있는지 각각 확인합니다.
+	// 파란색 안티콘을 K보다 크게 확대하거나 파란색 안티콘을 확대합니다.
+	// blueCandidate의 K가 초과됩니다.
 	chainBlock := chainBlockData{
 		blockData: newBlockData,
 	}
 
 	for {
+		// 체인 블록을 사용하는 블루 후보 확인
 		isBlue, isRed, err := gm.checkBlueCandidateWithChainBlock(stagingArea, newBlockData, chainBlock, blueCandidate,
 			candidateBluesAnticoneSizes, &candidateAnticoneSize)
 		if err != nil {
@@ -190,6 +215,16 @@ func (gm *ghostdagManager) checkBlueCandidateWithChainBlock(stagingArea *model.S
 	// no point in checking it.
 
 	// We check if chainBlock is not the new block by checking if it has a hash.
+	// blueCandidate가 chainBlock의 미래에 있다면 이는 다음을 의미합니다.
+	// 나머지 모든 파란색은 chainBlock의 과거에 있으므로
+	// blueCandidate의 과거. 이 경우 우리는 확실히 알고 있습니다
+	// blueCandidate의 안티콘은 K를 초과하지 않으며 표시할 수 있습니다.
+	// 파란색으로 표시됩니다.
+	//
+	// 새 블록은 항상 blueCandidate의 미래에 있으므로
+	// 확인해봐도 의미가 없습니다.
+
+	// 해시가 있는지 확인하여 chainBlock이 새 블록이 아닌지 확인합니다.
 	if chainBlock.hash != nil {
 		isAncestorOfBlueCandidate, err := gm.dagTopologyManager.IsAncestorOf(stagingArea, chainBlock.hash, blueCandidate)
 		if err != nil {
@@ -230,6 +265,8 @@ func (gm *ghostdagManager) checkBlueCandidateWithChainBlock(stagingArea *model.S
 
 		// This is a sanity check that validates that a blue
 		// block's blue anticone is not already larger than K.
+		// 이것은 파란색이 올바른지 확인하는 온전성 검사입니다.
+		// 블록의 파란색 안티콘은 아직 K보다 크지 않습니다.
 		if candidateBluesAnticoneSizes[*block] > gm.k {
 			return false, false, errors.New("found blue anticone size larger than k")
 		}
@@ -240,6 +277,8 @@ func (gm *ghostdagManager) checkBlueCandidateWithChainBlock(stagingArea *model.S
 
 // blueAnticoneSize returns the blue anticone size of 'block' from the worldview of 'context'.
 // Expects 'block' to be in the blue set of 'context'
+// blueAnticoneSize는 'context'의 세계관에서 'block'의 파란색 안티콘 크기를 반환합니다.
+// '블록'이 파란색 '컨텍스트' 세트에 있을 것으로 예상합니다.
 func (gm *ghostdagManager) blueAnticoneSize(stagingArea *model.StagingArea,
 	block *externalapi.DomainHash, context *externalapi.BlockGHOSTDAGData) (externalapi.KType, error) {
 
