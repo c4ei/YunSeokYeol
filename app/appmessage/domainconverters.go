@@ -376,8 +376,10 @@ func DomainBlockToRPCBlock(block *externalapi.DomainBlock) *RPCBlock {
 }
 
 // RPCBlockToDomainBlock converts `block` into a DomainBlock
+// RPCBlockToDomainBlock은 '블록'을 DomainBlock으로 변환합니다.
 func RPCBlockToDomainBlock(block *RPCBlock) (*externalapi.DomainBlock, error) {
 	parents := make([]externalapi.BlockLevelParents, len(block.Header.Parents))
+	// fmt.Printf("383 domainconverters.go RPCBlockToDomainBlock() block:%+v\n", block)
 	for i, blockLevelParents := range block.Header.Parents {
 		parents[i] = make(externalapi.BlockLevelParents, len(blockLevelParents.ParentHashes))
 		for j, parentHash := range blockLevelParents.ParentHashes {
@@ -422,6 +424,8 @@ func RPCBlockToDomainBlock(block *RPCBlock) (*externalapi.DomainBlock, error) {
 		blueWork,
 		pruningPoint)
 	transactions := make([]*externalapi.DomainTransaction, len(block.Transactions))
+	// fmt.Printf("428 domainconverters.go RPCBlockToDomainBlock() header:%+v\n", header)
+	// fmt.Printf("429 domainconverters.go RPCBlockToDomainBlock() transactions:%+v\n", transactions)
 	for i, transaction := range block.Transactions {
 		domainTransaction, err := RPCTransactionToDomainTransaction(transaction)
 		if err != nil {
@@ -439,6 +443,7 @@ func RPCBlockToDomainBlock(block *RPCBlock) (*externalapi.DomainBlock, error) {
 func BlockWithTrustedDataToDomainBlockWithTrustedData(block *MsgBlockWithTrustedData) *externalapi.BlockWithTrustedData {
 	daaWindow := make([]*externalapi.TrustedDataDataDAAHeader, len(block.DAAWindow))
 	for i, daaBlock := range block.DAAWindow {
+		// fmt.Printf("447 domainconverters.go BlockWithTrustedDataToDomainBlockWithTrustedData() ghostdagDataToDomainGHOSTDAGData(daaBlock.GHOSTDAGData):%+v\n", ghostdagDataToDomainGHOSTDAGData(daaBlock.GHOSTDAGData))
 		daaWindow[i] = &externalapi.TrustedDataDataDAAHeader{
 			Header:       BlockHeaderToDomainBlockHeader(&daaBlock.Block.Header),
 			GHOSTDAGData: ghostdagDataToDomainGHOSTDAGData(daaBlock.GHOSTDAGData),

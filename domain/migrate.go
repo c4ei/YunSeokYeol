@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"fmt"
 	"math"
 
 	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
@@ -14,7 +15,7 @@ func (d *domain) migrate() error {
 		return err
 	}
 	log.Infof("Current pruning point: %s", pruningPoint)
-
+	fmt.Printf("\nline 17 ### migrate.go migrate d.consensusConfig.Params.GenesisHash : %+v \n", d.consensusConfig.Params.GenesisHash)
 	if d.consensusConfig.Params.GenesisHash.Equal(pruningPoint) {
 		err = d.initStagingConsensus(d.consensusConfig)
 		if err != nil {

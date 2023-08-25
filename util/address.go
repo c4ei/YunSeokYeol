@@ -39,7 +39,7 @@ const (
 	// Unknown/Erroneous prefix
 	Bech32PrefixUnknown Bech32Prefix = iota
 
-	// Prefix for the main network.
+	// Prefix for the main network. 메인 네트워크의 접두사입니다.
 	Bech32PrefixC4ex
 
 	// Prefix for the dev network.
@@ -85,6 +85,10 @@ func (prefix Bech32Prefix) String() string {
 // and a payload which encodes the c4ex network and address type. It is used
 // in both pay-to-pubkey (P2PK) and pay-to-script-hash (P2SH) address
 // encoding.
+// encodeAddress는 네트워크 접두사가 주어지면 사람이 읽을 수 있는 결제 주소를 반환합니다.
+// 그리고 c4ex 네트워크와 주소 유형을 인코딩하는 페이로드입니다. 사용된다
+// P2PK(pay-to-pubkey) 주소와 P2SH(pay-to-script-hash) 주소 모두에서
+// 인코딩.
 func encodeAddress(prefix Bech32Prefix, payload []byte, version byte) string {
 	return bech32.Encode(prefix.String(), payload, version)
 }
@@ -127,6 +131,11 @@ type Address interface {
 //
 // If any expectedPrefix except Bech32PrefixUnknown is passed, it is compared to the
 // prefix extracted from the address, and if the two do not match - an error is returned
+// DecodeAddress는 주소의 문자열 인코딩을 디코딩하고 반환합니다.
+// addr이 알려진 주소 유형에 대한 유효한 인코딩인 경우 주소입니다.
+//
+// Bech32PrefixUnknown을 제외한 예상 Prefix가 전달되면
+// 주소에서 추출된 접두사, 두 개가 일치하지 않으면 오류가 반환됩니다.
 func DecodeAddress(addr string, expectedPrefix Bech32Prefix) (Address, error) {
 	prefixString, decoded, version, err := bech32.Decode(addr)
 	if err != nil {
@@ -157,8 +166,8 @@ func DecodeAddress(addr string, expectedPrefix Bech32Prefix) (Address, error) {
 // PublicKeySize is the public key size for a schnorr public key
 const PublicKeySize = 32
 
-// AddressPublicKey is an Address for a pay-to-pubkey (P2PK)
-// transaction.
+// AddressPublicKey is an Address for a pay-to-pubkey (P2PK) transaction.
+// AddressPublicKey는 P2PK(pay-to-pubkey) 거래를 위한 주소입니다.
 type AddressPublicKey struct {
 	prefix    Bech32Prefix
 	publicKey [PublicKeySize]byte
@@ -175,6 +184,11 @@ func NewAddressPublicKey(publicKey []byte, prefix Bech32Prefix) (*AddressPublicK
 // it up through its parameters. This is useful when creating a new address
 // structure from a string encoding where the identifier byte is already
 // known.
+// newAddressPubKey는 공개키 주소를 생성하는 내부 API입니다.
+// 검색하는 대신 네트워크에 대해 알려진 선행 식별자 바이트를 사용합니다.
+// 매개변수를 통해 확인합니다. 새 주소를 만들 때 유용합니다.
+// 식별자 바이트가 이미 있는 문자열 인코딩의 구조
+// 모두 다 아는.
 func newAddressPubKey(prefix Bech32Prefix, publicKey []byte) (*AddressPublicKey, error) {
 	// Check for a valid pubkey length.
 	if len(publicKey) != PublicKeySize {
@@ -212,6 +226,9 @@ func (a *AddressPublicKey) Prefix() Bech32Prefix {
 // String returns a human-readable string for the pay-to-pubkey address.
 // This is equivalent to calling EncodeAddress, but is provided so the type can
 // be used as a fmt.Stringer.
+// String은 Pay-to-Pubkey 주소에 대해 사람이 읽을 수 있는 문자열을 반환합니다.
+// 이는 EncodeAddress를 호출하는 것과 동일하지만 유형이
+// fmt.Stringer로 사용됩니다.
 func (a *AddressPublicKey) String() string {
 	return a.EncodeAddress()
 }
@@ -235,8 +252,11 @@ func NewAddressPublicKeyECDSA(publicKey []byte, prefix Bech32Prefix) (*AddressPu
 // newAddressPubKeyECDSA is the internal API to create an ECDSA pubkey address
 // with a known leading identifier byte for a network, rather than looking
 // it up through its parameters. This is useful when creating a new address
-// structure from a string encoding where the identifier byte is already
-// known.
+// structure from a string encoding where the identifier byte is already known.
+// newAddressPubKeyECDSA는 ECDSA 공개키 주소를 생성하기 위한 내부 API입니다.
+// 검색하는 대신 네트워크에 대해 알려진 선행 식별자 바이트를 사용합니다.
+// 매개변수를 통해 확인합니다. 새 주소를 만들 때 유용합니다.
+// 식별자 바이트가 이미 알려진 문자열 인코딩의 구조입니다.
 func newAddressPubKeyECDSA(prefix Bech32Prefix, publicKey []byte) (*AddressPublicKeyECDSA, error) {
 	// Check for a valid pubkey length.
 	if len(publicKey) != PublicKeySizeECDSA {
@@ -300,8 +320,7 @@ func NewAddressScriptHashFromHash(scriptHash []byte, prefix Bech32Prefix) (*Addr
 // newAddressScriptHashFromHash is the internal API to create a script hash
 // address with a known leading identifier byte for a network, rather than
 // looking it up through its parameters. This is useful when creating a new
-// address structure from a string encoding where the identifer byte is already
-// known.
+// address structure from a string encoding where the identifer byte is already known.
 func newAddressScriptHashFromHash(prefix Bech32Prefix, scriptHash []byte) (*AddressScriptHash, error) {
 	// Check for a valid script hash length.
 	if len(scriptHash) != blake2b.Size256 {

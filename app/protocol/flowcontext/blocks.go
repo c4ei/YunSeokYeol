@@ -1,6 +1,7 @@
 package flowcontext
 
 import (
+	"fmt"
 	"time"
 
 	peerpkg "github.com/c4ei/c4exd/app/protocol/peer"
@@ -17,7 +18,7 @@ import (
 // relays newly unorphaned transactions and possibly rebroadcast
 // manually added transactions when not in IBD.
 func (f *FlowContext) OnNewBlock(block *externalapi.DomainBlock) error {
-
+	fmt.Printf("### line 21 ### blocks.go OnNewBlock block : %+v \n", block)
 	hash := consensushashing.BlockHash(block)
 	log.Tracef("OnNewBlock start for block %s", hash)
 	defer log.Tracef("OnNewBlock end for block %s", hash)
@@ -49,6 +50,8 @@ func (f *FlowContext) OnNewBlock(block *externalapi.DomainBlock) error {
 func (f *FlowContext) OnNewBlockTemplate() error {
 	// Clear current template cache. Note we call this even if the handler is nil, in order to keep the
 	// state consistent without dependency on external event registration
+	// 현재 템플릿 캐시를 지웁니다. 핸들러가 nil인 경우에도 이를 호출하여
+	// 외부 이벤트 등록에 의존하지 않는 상태 일관성
 	f.Domain().MiningManager().ClearBlockTemplate()
 	if f.onNewBlockTemplateHandler != nil {
 		return f.onNewBlockTemplateHandler()
@@ -68,7 +71,7 @@ func (f *FlowContext) OnPruningPointUTXOSetOverride() error {
 
 func (f *FlowContext) broadcastTransactionsAfterBlockAdded(
 	addedBlocks []*externalapi.DomainBlock, transactionsAcceptedToMempool []*externalapi.DomainTransaction) error {
-
+	fmt.Printf("### line 74 ### blocks.go broadcastTransactionsAfterBlockAdded : %+v \n", transactionsAcceptedToMempool)
 	// Don't relay transactions when in IBD.
 	if f.IsIBDRunning() {
 		return nil
@@ -133,9 +136,11 @@ func (f *FlowContext) IsIBDRunning() bool {
 	return f.ibdPeer != nil
 }
 
-// TrySetIBDRunning attempts to set `isInIBD`. Returns false
-// if it is already set
+// TrySetIBDRunning attempts to set `isInIBD`. Returns false if it is already set
+// TrySetIBDRunning은 `isInIBD` 설정을 시도합니다. 이미 설정된 경우 false를 반환합니다.
 func (f *FlowContext) TrySetIBDRunning(ibdPeer *peerpkg.Peer) bool {
+	fmt.Printf("#############################################\n")
+	fmt.Printf("line 140 ### blocks.go TrySetIBDRunning : %+v \n", ibdPeer)
 	f.ibdPeerMutex.Lock()
 	defer f.ibdPeerMutex.Unlock()
 

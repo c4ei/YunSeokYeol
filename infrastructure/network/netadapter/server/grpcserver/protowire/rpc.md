@@ -1,3 +1,5 @@
+https://github.com/c4ei/c4exd/blob/master/infrastructure/network/netadapter/server/grpcserver/protowire/rpc.md
+
 # Protocol Documentation
 <a name="top"></a>
 
@@ -476,7 +478,7 @@ See: SubmitBlockRequestMessage
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | block | [RpcBlock](#protowire.RpcBlock) |  |  |
-| isSynced | [bool](#bool) |  | Whether c4exd thinks that it&#39;s synced. Callers are discouraged (but not forbidden) from solving blocks when c4exd is not synced. That is because when c4exd isn&#39;t in sync with the rest of the network there&#39;s a high chance the block will never be accepted, thus the solving effort would have been wasted. |
+| isSynced | [bool](#bool) |  | Whether c4exd thinks that it&#39;s synced. Callers are discouraged (but not forbidden) from solving blocks when c4exd is not synced. That is because when c4exd isn&#39;t in sync with the rest of the network there&#39;s a high chance the block will never be accepted, thus the solving effort would have been wasted. c4exd가 동기화되었다고 생각하는지 여부입니다. c4exd가 동기화되지 않은 경우 호출자는 블록을 해결하지 못하도록 권장됩니다(금지는 아님). 이는 c4exd가 네트워크의 나머지 부분과 동기화되지 않으면 블록이 승인되지 않을 가능성이 높기 때문에 해결 노력이 낭비될 수 있기 때문입니다.|
 | error | [RPCError](#protowire.RPCError) |  |  |
 
 

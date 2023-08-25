@@ -1,6 +1,9 @@
 package externalapi
 
-import "math/big"
+import (
+	"fmt"
+	"math/big"
+)
 
 // DomainBlock represents a C4ex block
 type DomainBlock struct {
@@ -14,7 +17,7 @@ func (block *DomainBlock) Clone() *DomainBlock {
 	for i, tx := range block.Transactions {
 		transactionClone[i] = tx.Clone()
 	}
-
+	fmt.Printf("20 line block.go block:%+v\n", block)
 	return &DomainBlock{
 		Header:       block.Header,
 		Transactions: transactionClone,
@@ -30,7 +33,7 @@ func (block *DomainBlock) Equal(other *DomainBlock) bool {
 	if block == nil || other == nil {
 		return block == other
 	}
-
+	fmt.Printf("36 line block.go block:%+v\n", block)
 	if len(block.Transactions) != len(other.Transactions) {
 		return false
 	}

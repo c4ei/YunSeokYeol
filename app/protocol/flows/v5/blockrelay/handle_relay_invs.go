@@ -99,6 +99,7 @@ func (flow *handleRelayInvsFlow) start() error {
 
 		if flow.IsOrphan(inv.Hash) {
 			if flow.Config().NetParams().DisallowDirectBlocksOnTopOfGenesis && !flow.Config().AllowSubmitBlockWhenNotSynced && isGenesisVirtualSelectedParent {
+				// "제네시스 블록만 있는 노드에 대해 고아 %s을(를) 처리할 수 없습니다. 노드는 IBD가 필요합니다. 정상적인 작동이 재개되기 전의 최근 가지치기 지점까지."
 				log.Infof("Cannot process orphan %s for a node with only the genesis block. The node needs to IBD "+
 					"to the recent pruning point before normal operation can resume.", inv.Hash)
 				continue

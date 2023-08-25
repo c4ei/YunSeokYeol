@@ -13,7 +13,7 @@ var MainnetParams = Params{
 		"dnsseed.c4ei.net",
 	},
 
-
+ps -ef|grep c4exd
 
 https://github.com/c4ei/c4exp
 
@@ -22,16 +22,39 @@ go mod tidy
 --utxoindex 없이 c4exd가 실행되는 경우 사용할 수 없는 방법
 Method unavailable when c4exd is run without --utxoindex
 
+/home/dev/coin/c4exd/testing/integration/utxo_index_test.go
+harnessParams := &harnessParams{
+	p2pAddress:              p2pAddress1,
+	rpcAddress:              rpcAddress1,
+	miningAddress:           miningAddress1,
+	miningAddressPrivateKey: miningAddress1PrivateKey,
+	utxoIndex:               true,
+}
+c4exd, teardown := setupHarness(t, harnessParams)
 
-/home/dev/coin/c4exd/domain/domain_test.go
-Running tool: /usr/bin/go test -timeout 30s -run ^TestCreateStagingConsensus/c4ex-mainnet$ github.com/c4ei/c4exd/domain
+func TestUTXOIndex(t *testing.T) {
+	// Setup a single c4exd instance
+	harnessParams := &harnessParams{
+		p2pAddress:              p2pAddress1,
+		rpcAddress:              rpcAddress1,
+		miningAddress:           miningAddress1,
+		miningAddressPrivateKey: miningAddress1PrivateKey,
+		utxoIndex:               true,
+/home/dev/coin/c4exd/testing/integration/config_test.go
+const rpcAddress1 untyped string = "127.0.0.1:12345"
+miningAddress1           = "c4exsim:qqqqnc0pxg7qw3qkc7l6sge8kfhsvvyt7mkw8uamtndqup27ftnd6c769gn66"
+const miningAddress1PrivateKey untyped string = "0d81045b0deb2af36a25403c2154c87aa82d89dd337b575bae27ce7f5de53cee"
 
-=== RUN   TestCreateStagingConsensus
-=== RUN   TestCreateStagingConsensus/c4ex-mainnet
-=== PAUSE TestCreateStagingConsensus/c4ex-mainnet
-=== CONT  TestCreateStagingConsensus/c4ex-mainnet
-    /home/dev/coin/c4exd/domain/for_all_nets.go:25: Running test for c4ex-mainnet
---- PASS: TestCreateStagingConsensus (0.00s)
-    --- PASS: TestCreateStagingConsensus/c4ex-mainnet (0.80s)
-PASS
-ok      github.com/c4ei/c4exd/domain    (cached)
+/home/dev/coin/c4exd/domain/consensus/utils/pow/pow.go
+
+
+
+dev@devcoin:~/coin/c4exd/bin$ ./c4exd --utxoindex
+2023-08-25 15:36:12.953 [INF] C4XD: Version 0.12.13
+2023-08-25 15:36:12.954 [INF] C4XD: Loading database from '/home/dev/.c4exd/c4ex-mainnet/datadir2'
+2023-08-25 15:36:13.002 [INF] ADXR: Loaded 1 addresses and 0 banned addresses
+2023-08-25 15:36:13.003 [INF] C4XD: UTXO index started
+2023-08-25 15:36:13.004 [INF] TXMP: P2P Server listening on [::]:21001
+2023-08-25 15:36:13.004 [INF] TXMP: RPC Server listening on [::]:21000
+2023-08-25 15:36:13.004 [INF] CMGR: Connecting to 122.35.243.20:21001
+2023-08-25 15:36:14.284 [INF] CMGR: 1 addresses found from DNS seed n.dnsseed.c4ei.net

@@ -18,10 +18,17 @@ import (
 // This example demonstrates creating a script which pays to a c4ex address.
 // It also prints the created script hex and uses the DisasmString function to
 // display the disassembled script.
+// 이 예는 c4ex 주소로 지불하는 스크립트를 생성하는 방법을 보여줍니다.
+// 또한 생성된 스크립트 16진수를 인쇄하고 DisasmString 함수를 사용하여
+// 디스어셈블된 스크립트를 표시합니다.
 func ExamplePayToAddrScript() {
 	// Parse the address to send the coins to into a util.Address
 	// which is useful to ensure the accuracy of the address and determine
 	// the address type. It is also required for the upcoming call to
+	// PayToAddrScript.
+	// 코인을 보낼 주소를 util.Address로 구문 분석합니다.
+	// 이는 주소의 정확성을 보장하고 결정하는 데 유용합니다.
+	// 주소 유형. 이는 향후 통화에도 필요합니다.
 	// PayToAddrScript.
 	addressStr := "c4ex:qqj9fg59mptxkr9j0y53j5mwurcmda5mtza9n6v9pm9uj8h0wgk6uma5pvumr"
 	address, err := util.DecodeAddress(addressStr, util.Bech32PrefixC4ex)

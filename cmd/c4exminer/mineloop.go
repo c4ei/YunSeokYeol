@@ -2,6 +2,7 @@ package main
 
 import (
 	nativeerrors "errors"
+	"fmt"
 	"math/rand"
 	"sync/atomic"
 	"time"
@@ -24,19 +25,18 @@ const logHashRateInterval = 10 * time.Second
 
 func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond float64, mineWhenNotSynced bool,
 	miningAddr util.Address) error {
-	rand.Seed(time.Now().UnixNano()) // Seed the global concurrent-safe random source.
+	rand.Seed(time.Now().UnixNano()) // Seed the global concurrent-safe random source. //전역 동시 안전 무작위 소스를 시드합니다.
 
 	errChan := make(chan error)
 	doneChan := make(chan struct{})
-
+	fmt.Printf("line 32 ### mineloop.go mineLoop errChan : %+v / doneChan : %+v\n", errChan, doneChan)
 	// We don't want to send router.DefaultMaxMessages blocks at once because there's
 	// a high chance we'll get disconnected from the node, so we make the channel
 	// capacity router.DefaultMaxMessages/2 (we give some slack for getBlockTemplate
 	// requests)
 	// 우리는 router.DefaultMaxMessages 블록을 한 번에 보내고 싶지 않습니다.
 	// 노드와의 연결이 끊어질 가능성이 높으므로 채널을 만듭니다.
-	// 용량 router.DefaultMaxMessages/2(getBlockTemplate에 약간의 여유를 줍니다.
-	// 요청)
+	// 용량 router.DefaultMaxMessages/2 (getBlockTemplate 요청에 대해 약간의 여유를 제공합니다)
 	foundBlockChan := make(chan *externalapi.DomainBlock, router.DefaultMaxMessages/2)
 
 	spawn("templatesLoop", func() {
@@ -66,7 +66,11 @@ func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond 
 		}
 		windowStart := time.Now()
 		for blockIndex := 1; ; blockIndex++ {
+			fmt.Printf("##############################################################################\n")
+			fmt.Printf("line 69 ### mineloop.go blockIndex : %+v / mineWhenNotSynced : %+v\n", blockIndex, mineWhenNotSynced)
+			fmt.Printf("##############################################################################\n")
 			foundBlockChan <- mineNextBlock(mineWhenNotSynced)
+			fmt.Printf("line 71 mineloop.go foundBlockChan : %+v\n", foundBlockChan)
 			if hasBlockRateTarget {
 				<-blockTicker.C
 				if (blockIndex % windowSize) == 0 {
@@ -82,6 +86,7 @@ func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond 
 	spawn("handleFoundBlock", func() {
 		for i := uint64(0); numberOfBlocks == 0 || i < numberOfBlocks; i++ {
 			block := <-foundBlockChan
+			fmt.Printf("line 87 ### mineloop.go block : %+v\n", block)
 			err := handleFoundBlock(client, block)
 			if err != nil {
 				errChan <- err
@@ -149,18 +154,16 @@ func mineNextBlock(mineWhenNotSynced bool) *externalapi.DomainBlock {
 	nonce := rand.Uint64() // Use the global concurrent-safe random source.
 	for {
 		nonce++
-		// For each nonce we try to build a block from the most up to date
-		// block template.
-		// In the rare case where the nonce space is exhausted for a specific
-		// block, it'll keep looping the nonce until a new block template
-		// is discovered.
-		// 각 nonce에 대해 최신 블록을 구축하려고 합니다.
-		// 블록 템플릿.
-		// 특정 항목에 대해 nonce 공간이 소진되는 드문 경우입니다.
-		// 블록, 새 블록 템플릿이 나올 때까지 nonce를 계속 반복합니다.
-		// 발견되었습니다.
+		// For each nonce we try to build a block from the most up to date block template.
+		// In the rare case where the nonce space is exhausted for a specific block,
+		// it'll keep looping the nonce until a new block template is discovered.
+		// 각 nonce에 대해 최신 블록 템플릿에서 블록을 구축하려고 합니다.
+		// 드물게 특정 블록에 대해 nonce 공간이 소진되는 경우,
+		// 새로운 블록 템플릿이 발견될 때까지 nonce를 계속 반복합니다.
+		fmt.Printf("159 mineNextBlock() mineWhenNotSynced:%v \n", mineWhenNotSynced)
 		block, state := getBlockForMining(mineWhenNotSynced)
 		state.Nonce = nonce
+		fmt.Printf("mineNextBlock() nonce:%v block:%v Timestamp:%v Nonce:%v Target:%v\n", nonce, block, state.Timestamp, state.Nonce, state.Target)
 		atomic.AddUint64(&hashesTried, 1)
 		if state.CheckProofOfWork() {
 			mutHeader := block.Header.ToMutable()
@@ -193,6 +196,7 @@ func getBlockForMining(mineWhenNotSynced bool) (*externalapi.DomainBlock, *pow.S
 		if !isSynced && !mineWhenNotSynced {
 			if shouldLog {
 				log.Warnf("C4exd is not synced. Skipping current block template")
+				fmt.Printf("198 line mineloop.go getBlockForMining() Timestamp:%v Nonce:%v Target:%v\n", state.Timestamp, state.Nonce, state.Target)
 			}
 			time.Sleep(sleepTimeWhenNotSynced)
 			continue
