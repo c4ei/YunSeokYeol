@@ -1,15 +1,44 @@
 package appmessage
 
-import "github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+import (
+	// "bytes"
+	// "encoding/gob"
+	// "log"
 
-// mainnetGenesisHash is the hash of the first block in the block DAG for the
-// main network (genesis block).
+	"github.com/c4ei/c4exd/domain/consensus/model/externalapi"
+)
+
+// python2 genesis.py -a scrypt -z "C4EX started At 28/Aug/2023" -t 1693213200
+// merkle hash: 196714790b0a9f8bfc072ff7596f10ef4884984e026ead13846a183891952d48
+// pszTimestamp: C4EX started At 28/Aug/2023
+// pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
+// time: 1693213200
+// bits: 0x1e0ffff0
+// Searching for genesis hash..
+// genesis hash found!
+// nonce: 203753
+// genesis hash: 6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c
+// dev@dev-virtual-machine:~/GenesisH0$
+
+// mainnetGenesisHash is the hash of the first block in the block DAG for the main network (genesis block).
+// org
+// var mainnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
+// 	0xdc, 0x5f, 0x5b, 0x5b, 0x1d, 0xc2, 0xa7, 0x25,
+// 	0x49, 0xd5, 0x1d, 0x4d, 0xee, 0xd7, 0xa4, 0x8b,
+// 	0xaf, 0xd3, 0x14, 0x4b, 0x56, 0x78, 0x98, 0xb1,
+// 	0x8c, 0xfd, 0x9f, 0x69, 0xdd, 0xcf, 0xbb, 0x63,
+// })
+
+// new 58c2d4199e21f910d1571d114969cecef48f09f934d42ccb6a281a15868f2999
 var mainnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
-	0xdc, 0x5f, 0x5b, 0x5b, 0x1d, 0xc2, 0xa7, 0x25,
-	0x49, 0xd5, 0x1d, 0x4d, 0xee, 0xd7, 0xa4, 0x8b,
-	0xaf, 0xd3, 0x14, 0x4b, 0x56, 0x78, 0x98, 0xb1,
-	0x8c, 0xfd, 0x9f, 0x69, 0xdd, 0xcf, 0xbb, 0x63,
+	0x6e, 0xee, 0xd4, 0x4f, 0x17, 0x0f, 0xa5, 0xec,
+	0xe9, 0x05, 0x51, 0x4c, 0x35, 0x54, 0xb4, 0x05,
+	0x28, 0xc9, 0x65, 0x78, 0x30, 0x0d, 0xf6, 0x1b,
+	0xac, 0xce, 0xa8, 0x47, 0x19, 0x6d, 0x88, 0x3c,
 })
+
+// var mainnetGenesisHash = externalapi.NewDomainHashFromString("6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c")
+// var mainnetGenesisMerkleRoot = externalapi.NewDomainHashFromString("196714790b0a9f8bfc072ff7596f10ef4884984e026ead13846a183891952d48")
 
 // simnetGenesisHash is the hash of the first block in the block DAG for the
 // simulation test network.
@@ -20,13 +49,20 @@ var simnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.Dom
 	0x90, 0x4c, 0xf0, 0x6c, 0x4d, 0x5f, 0xd3, 0x62,
 })
 
-// mainnetGenesisMerkleRoot is the hash of the first transaction in the genesis
-// block for the main network.
+// mainnetGenesisMerkleRoot is the hash of the first transaction in the genesis block for the main network.
+// org
+// var mainnetGenesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
+// 	0x4a, 0x5e, 0x1e, 0x4b, 0xaa, 0xb8, 0x9f, 0x3a,
+// 	0x32, 0x51, 0x8a, 0x88, 0xc3, 0x1b, 0xc8, 0x7f,
+// 	0x61, 0x8f, 0x76, 0x67, 0x3e, 0x2c, 0xc7, 0x7a,
+// 	0xb2, 0x12, 0x7b, 0x7a, 0xfd, 0xed, 0xa3, 0x3b,
+// })
+
 var mainnetGenesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
-	0x4a, 0x5e, 0x1e, 0x4b, 0xaa, 0xb8, 0x9f, 0x3a,
-	0x32, 0x51, 0x8a, 0x88, 0xc3, 0x1b, 0xc8, 0x7f,
-	0x61, 0x8f, 0x76, 0x67, 0x3e, 0x2c, 0xc7, 0x7a,
-	0xb2, 0x12, 0x7b, 0x7a, 0xfd, 0xed, 0xa3, 0x3b,
+	0x19, 0x67, 0x14, 0x79, 0x0b, 0x0a, 0x9f, 0x8b,
+	0xfc, 0x07, 0x2f, 0xf7, 0x59, 0x6f, 0x10, 0xef,
+	0x48, 0x84, 0x98, 0x4e, 0x02, 0x6e, 0xad, 0x13,
+	0x84, 0x6a, 0x18, 0x38, 0x91, 0x95, 0x2d, 0x48,
 })
 
 var exampleAcceptedIDMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
@@ -42,3 +78,30 @@ var exampleUTXOCommitment = externalapi.NewDomainHashFromByteArray(&[externalapi
 	0x7F, 0x16, 0xC5, 0x96, 0x2E, 0x8B, 0xD9, 0x63,
 	0x65, 0x9C, 0x79, 0x3C, 0xE3, 0x70, 0xD9, 0x5F,
 })
+
+// externalapi.NewDomainHashFromString(parentHash)
+// // Serialize before sending
+// func (b *Block) Serialize() []byte {
+// 	var value bytes.Buffer
+
+// 	encoder := gob.NewEncoder(&value)
+// 	err := encoder.Encode(b)
+// 	if err != nil {
+// 		log.Fatal("Encode Error:", err)
+// 	}
+
+// 	return value.Bytes()
+// }
+
+// // Deserialize block(not a method)
+// func DeserializeBlock(d []byte) *Block {
+// 	var block Block
+
+// 	decoder := gob.NewDecoder(bytes.NewReader(d))
+// 	err := decoder.Decode(&block)
+// 	if err != nil {
+// 		log.Fatal("Decode Error:", err)
+// 	}
+
+// 	return &block
+// }

@@ -34,7 +34,7 @@ var serviceDescription = &winservice.ServiceDescription{
 	Name:        "c4exdsvc",
 	DisplayName: "C4exd Service",
 	Description: "Downloads and stays synchronized with the C4ex blockDAG and " +
-		"provides DAG services to applications.",
+		"provides DAG services to applications. (C4ex blockDAG 및 응용 프로그램에 DAG 서비스를 제공합니다.)",
 }
 
 type c4exdApp struct {

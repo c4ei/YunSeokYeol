@@ -5,6 +5,7 @@
 package appmessage
 
 import (
+	"fmt"
 	"math/big"
 	"reflect"
 	"testing"
@@ -16,7 +17,7 @@ import (
 // TestBlockHeader tests the MsgBlockHeader API.
 func TestBlockHeader(t *testing.T) {
 	nonce := uint64(0xba4d87a69924a93d)
-
+	fmt.Printf("### line 20 ### p2p_msgblockheader_test.go TestBlockHeader() nonce : %v , mainnetGenesisMerkleRoot : %+v, mainnetGenesisHash : %+v \n", nonce, mainnetGenesisMerkleRoot, mainnetGenesisHash)
 	parents := []externalapi.BlockLevelParents{[]*externalapi.DomainHash{mainnetGenesisHash, simnetGenesisHash}}
 
 	merkleHash := mainnetGenesisMerkleRoot

@@ -1,0 +1,23 @@
+https://docs.google.com/document/d/1fkoUxYDKiQNlfT2Izfk4QYQ6lW2DNKbAfz5eBhO-0s4/edit?usp=sharing
+--> https://github.com/kaspagang/kaspad-py-explorer/blob/main/src/genesis_proof.ipynb
+
+0fca37ca667c2d550a6c4416dad9717e50927128c424fa4edbebc436ab13aeef
+58c2d4199e21f910d1571d114969cecef48f09f934d42ccb6a281a15868f2999
+
+
+// python2 genesis.py -a scrypt -z "C4EX started At 28/Aug/2023" -t 1693213200
+// merkle hash: 196714790b0a9f8bfc072ff7596f10ef4884984e026ead13846a183891952d48
+// pszTimestamp: C4EX started At 28/Aug/2023
+// pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
+// time: 1693213200
+// bits: 0x1e0ffff0
+// Searching for genesis hash..
+// genesis hash found!
+// nonce: 203753
+// genesis hash: 6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c
+// dev@dev-virtual-machine:~/GenesisH0$
+
+
+/home/dev/coin/c4exd/domain/dagconfig/genesis.go
+
+GenesisBlock:0x11bd4c0 GenesisHash:6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c Po

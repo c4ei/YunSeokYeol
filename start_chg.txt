@@ -58,3 +58,8 @@ dev@devcoin:~/coin/c4exd/bin$ ./c4exd --utxoindex
 2023-08-25 15:36:13.004 [INF] TXMP: RPC Server listening on [::]:21000
 2023-08-25 15:36:13.004 [INF] CMGR: Connecting to 122.35.243.20:21001
 2023-08-25 15:36:14.284 [INF] CMGR: 1 addresses found from DNS seed n.dnsseed.c4ei.net
+
+/home/dev/coin/c4exd/app/appmessage/common_test.go
+mainnetGenesisHash
+mainnetGenesisMerkleRoot
+/home/dev/coin/c4exd/infrastructure/network/addressmanager/network.go

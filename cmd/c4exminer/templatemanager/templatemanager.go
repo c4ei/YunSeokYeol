@@ -1,7 +1,7 @@
 package templatemanager
 
 import (
-	// "fmt"
+	"fmt"
 	"sync"
 
 	"github.com/c4ei/c4exd/app/appmessage"
@@ -21,10 +21,11 @@ func Get() (*externalapi.DomainBlock, *pow.State, bool) {
 	// Shallow copy the block so when the user replaces the header it won't affect the template here.
 	// 사용자가 헤더를 교체할 때 여기의 템플릿에 영향을 미치지 않도록 블록을 얕은 복사합니다.
 	if currentTemplate == nil {
+		fmt.Printf("#######################\ntemplatemanager.go 25 line Get() currentTemplate:%+v\n#######################\n", currentTemplate)
 		return nil, nil, false
 	}
 	block := *currentTemplate
-	// fmt.Printf("templatemanager.go Get() block:%+v\n", block) // block:{Header:0xc0005fec00 Transactions:[0xc0006166c0]}
+	fmt.Printf("templatemanager.go 29 line Get() block:%+v\n", block) // block:{Header:0xc0005fec00 Transactions:[0xc0006166c0]}
 	state := *currentState
 	return &block, &state, isSynced
 }

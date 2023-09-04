@@ -1,6 +1,7 @@
 package consensus
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"sync"
@@ -109,11 +110,11 @@ func NewFactory() Factory {
 	}
 }
 
-// NewConsensus instantiates a new Consensus
+// NewConsensus instantiates a new Consensus NewConsensus는 새로운 Consensus를 인스턴스화합니다.
 func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Database, dbPrefix *prefix.Prefix,
 	consensusEventsChan chan externalapi.ConsensusEvent) (
 	consensusInstance externalapi.Consensus, shouldMigrate bool, err error) {
-
+	fmt.Printf("#######################\nfactory.go 117 line Get() Config:%+v\n#######################\n", config)
 	dbManager := consensusdatabase.New(db)
 	prefixBucket := consensusdatabase.MakeBucket(dbPrefix.Serialize())
 
@@ -138,11 +139,12 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 	if err != nil {
 		return nil, false, err
 	}
+	fmt.Printf("#######################\nfactory.go 142 line blockStore:%+v\n#######################\n", blockStore)
 	blockHeaderStore, err := blockheaderstore.New(dbManager, prefixBucket, 10_000, preallocateCaches)
 	if err != nil {
 		return nil, false, err
 	}
-
+	fmt.Printf("line 146 factory.go blockHeaderStore:%+v\n#######################\n", blockHeaderStore)
 	blockStatusStore := blockstatusstore.New(prefixBucket, pruningWindowSizePlusFinalityDepthForCache, preallocateCaches)
 	multisetStore := multisetstore.New(prefixBucket, 200, preallocateCaches)
 	pruningStore := pruningstore.New(prefixBucket, 2, preallocateCaches)
@@ -165,7 +167,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 	if err != nil {
 		return nil, false, err
 	}
-
+	fmt.Printf("line 170 factory.go model.VirtualGenesisBlockHash:%+v\n#######################\n", model.VirtualGenesisBlockHash)
 	newReachabilityManager := reachabilitymanager.New(
 		dbManager,
 		ghostdagDataStores[0],
@@ -203,6 +205,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		config.GenesisHash,
 		config.MaxBlockLevel,
 	)
+	fmt.Printf("line 208 factory.go parentsManager:%+v , blockParentBuilder:%+v\n#######################\n", parentsManager, blockParentBuilder)
 
 	txMassCalculator := txmass.NewCalculator(config.MassPerTxByte, config.MassPerScriptPubKeyByte, config.MassPerSigOp)
 
@@ -254,6 +257,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		blockStore,
 		pruningStore,
 		blockHeaderStore)
+	fmt.Printf("factory.go 260 line coinbaseManager:%+v\n", coinbaseManager)
 	headerTipsManager := headersselectedtipmanager.New(dbManager, dagTopologyManager, dagTraversalManager,
 		ghostdagManager, headersSelectedTipStore, headersSelectedChainStore)
 	genesisHash := config.GenesisHash
@@ -308,7 +312,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 	if err != nil {
 		return nil, false, err
 	}
-
+	fmt.Printf("#######################\nfactory.go 315 line consensusStateManager:%+v\n#######################\n", consensusStateManager)
 	pruningManager := pruningmanager.New(
 		dbManager,
 		dagTraversalManager,
@@ -377,7 +381,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 
 		txMassCalculator,
 	)
-
+	// fmt.Printf("#######################\nfactory.go 384 line blockValidator:%+v\n#######################\n", blockValidator)
 	syncManager := syncmanager.New(
 		dbManager,
 		genesisHash,
@@ -414,7 +418,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		ghostdagDataStore,
 		daaBlocksStore,
 	)
-
+	// fmt.Printf("#######################\nfactory.go 421 line blockBuilder:%+v\n#######################\n", blockBuilder)
 	blockProcessor := blockprocessor.New(
 		genesisHash,
 		config.TargetTimePerBlock,
@@ -471,7 +475,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		config.PruningProofM,
 		config.MaxBlockLevel,
 	)
-
+	fmt.Printf("#######################\nfactory.go 478 line config.GenesisBlock:%+v\n#######################\n", config.GenesisBlock)
 	c := &consensus{
 		lock:            &sync.Mutex{},
 		databaseContext: dbManager,
@@ -525,12 +529,12 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 	if isOldReachabilityInitialized {
 		return c, true, nil
 	}
-
+	// fmt.Printf("#######################\nfactory.go 532 line config.SkipAddingGenesis:%+v\n#######################\n", config.SkipAddingGenesis)
 	err = c.Init(config.SkipAddingGenesis)
 	if err != nil {
 		return nil, false, err
 	}
-
+	fmt.Printf("#######################\nfactory.go 537 line config.SkipAddingGenesis:%+v\n#######################\n", config.SkipAddingGenesis)
 	err = consensusStateManager.RecoverUTXOIfRequired()
 	if err != nil {
 		return nil, false, err
@@ -544,8 +548,8 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		return nil, false, err
 	}
 
-	// If the virtual moved before shutdown but the pruning point hasn't, we
-	// move it if needed.
+	// If the virtual moved before shutdown but the pruning point hasn't, we move it if needed.
+	// 종료 전에 가상이 이동했지만 정리 지점은 이동하지 않은 경우 필요한 경우 이동합니다.
 	stagingArea := model.NewStagingArea()
 	err = pruningManager.UpdatePruningPointByVirtual(stagingArea)
 	if err != nil {

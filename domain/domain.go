@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"fmt"
 	"sync"
 	"sync/atomic"
 	"unsafe"
@@ -92,11 +93,12 @@ func (d *domain) initStagingConsensus(cfg *consensus.Config) error {
 	}
 
 	consensusFactory := consensus.NewFactory()
-
+	fmt.Printf("★★★★★★★★★★★★★★★★★★★★★★★\ndomain.go 96 line cfg:%+v \n d.db:%+v \n inactivePrefix:%+v \n d.consensusEventsChannel:%+v\n★★★★★★★★★★★★★★★★★★★★★★★\n", cfg, d.db, inactivePrefix, d.consensusEventsChannel)
 	consensusInstance, shouldMigrate, err := consensusFactory.NewConsensus(cfg, d.db, inactivePrefix, d.consensusEventsChannel)
 	if err != nil {
 		return err
 	}
+	fmt.Printf("★★★★★★★★★★★★★★★★★★★★★★★\ndomain.go 101 line consensusInstance:%+v\n★★★★★★★★★★★★★★★★★★★★★★★\n", consensusInstance)
 
 	if shouldMigrate {
 		return errors.Errorf("A fresh consensus should never return shouldMigrate=true")

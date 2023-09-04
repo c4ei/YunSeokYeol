@@ -140,17 +140,19 @@ type Config struct {
 	MiningAddrs   []util.Address
 	MinRelayTxFee util.Amount
 	Whitelists    []*net.IPNet
-	SubnetworkID  *externalapi.DomainSubnetworkID // nil in full nodes
+	SubnetworkID  *externalapi.DomainSubnetworkID // nil in full nodes 전체 노드에는 없음
 }
 
-// ServiceOptions defines the configuration options for the daemon as a service on
-// Windows.
+// ServiceOptions defines the configuration options for the daemon as a service on Windows.
+// ServiceOptions는 데몬에 대한 구성 옵션을 Windows의 서비스로 정의합니다.
 type ServiceOptions struct {
 	ServiceCommand string `short:"s" long:"service" description:"Service command {install, remove, start, stop}"`
 }
 
 // cleanAndExpandPath expands environment variables and leading ~ in the
 // passed path, cleans the result, and returns it.
+// cleanAndExpandPath는 환경 변수를 확장하고 ~를 시작합니다.
+// 경로를 전달하고 결과를 정리한 후 반환합니다.
 func cleanAndExpandPath(path string) string {
 	// Expand initial ~ to OS specific home directory.
 	if strings.HasPrefix(path, "~") {
@@ -160,6 +162,8 @@ func cleanAndExpandPath(path string) string {
 
 	// NOTE: The os.ExpandEnv doesn't work with Windows-style %VARIABLE%,
 	// but they variables can still be expanded via POSIX-style $VARIABLE.
+	// 참고: os.ExpandEnv는 Windows 스타일 %VARIABLE%에서는 작동하지 않습니다.
+	// 하지만 해당 변수는 여전히 POSIX 스타일 $VARIABLE을 통해 확장될 수 있습니다.
 	return filepath.Clean(os.ExpandEnv(path))
 }
 
@@ -203,9 +207,7 @@ func DefaultConfig() *Config {
 	return config
 }
 
-// LoadConfig initializes and parses the config using a config file and command
-// line options.
-//
+// LoadConfig initializes and parses the config using a config file and command line options.
 // The configuration proceeds as follows:
 //  1. Start with a default config with sane settings
 //  2. Pre-parse the command line to check for an alternative config file
@@ -215,6 +217,16 @@ func DefaultConfig() *Config {
 // The above results in c4exd functioning properly without any config settings
 // while still allowing the user to override settings with config files and
 // command line options. Command line options always take precedence.
+// LoadConfig는 구성 파일과 명령줄 옵션을 사용하여 구성을 초기화하고 구문 분석합니다.
+// 구성은 다음과 같이 진행됩니다.
+// 1. 정상적인 설정으로 기본 구성으로 시작합니다.
+// 2. 대체 구성 파일을 확인하기 위해 명령줄을 미리 구문 분석합니다.
+// 3. 지정된 옵션으로 기본값을 덮어쓰는 구성 파일 로드
+// 4. CLI 옵션을 구문 분석하고 지정된 옵션을 덮어쓰거나 추가합니다.
+//
+// 위의 결과는 구성 설정 없이도 c4exd가 제대로 작동하는 결과입니다.
+// 여전히 사용자가 구성 파일로 설정을 재정의할 수 있도록 허용하고
+// 명령줄 옵션. 명령줄 옵션이 항상 우선합니다.
 func LoadConfig() (*Config, error) {
 	cfgFlags := defaultFlags()
 
@@ -222,6 +234,10 @@ func LoadConfig() (*Config, error) {
 	// file or the version flag was specified. Any errors aside from the
 	// help message error can be ignored here since they will be caught by
 	// the final parse below.
+	// 대체 구성이 있는지 확인하기 위해 명령줄 옵션을 미리 구문 분석합니다.
+	// 파일 또는 버전 플래그가 지정되었습니다. 이외의 오류는
+	// 도움말 메시지 오류는 다음에 의해 포착되므로 여기서는 무시할 수 있습니다.
+	// 아래는 최종 구문 분석입니다.
 	preCfg := cfgFlags
 	preParser := newConfigParser(preCfg, flags.HelpFlag)
 	_, err := preParser.Parse()
@@ -237,6 +253,7 @@ func LoadConfig() (*Config, error) {
 	usageMessage := fmt.Sprintf("Use %s -h to show usage", appName)
 
 	// Show the version and exit if the version flag was specified.
+	// 버전을 표시하고 버전 플래그가 지정된 경우 종료합니다.
 	if preCfg.ShowVersion {
 		fmt.Println(appName, "version", version.Version())
 		os.Exit(0)
@@ -266,6 +283,7 @@ func LoadConfig() (*Config, error) {
 	}
 
 	// Parse command line options again to ensure they take precedence.
+	// 명령줄 옵션을 다시 분석하여 우선순위를 확인합니다.
 	_, err = parser.Parse()
 	if err != nil {
 		var flagsErr *flags.Error
@@ -280,8 +298,9 @@ func LoadConfig() (*Config, error) {
 	err = os.MkdirAll(DefaultAppDir, 0700)
 	if err != nil {
 		// Show a nicer error message if it's because a symlink is
-		// linked to a directory that does not exist (probably because
-		// it's not mounted).
+		// linked to a directory that does not exist (probably because it's not mounted).
+		// 심볼릭 링크가 다음과 같기 때문에 더 좋은 오류 메시지를 표시합니다.
+		// 존재하지 않는 디렉토리에 연결됩니다(마운트되지 않았기 때문일 수 있음).
 		var e *os.PathError
 		if ok := errors.As(err, &e); ok && os.IsExist(err) {
 			if link, lerr := os.Readlink(e.Path); lerr == nil {
@@ -304,11 +323,14 @@ func LoadConfig() (*Config, error) {
 	// according to the default of the active network. The set
 	// configuration value takes precedence over the default value for the
 	// selected network.
+	// 비표준 트랜잭션 릴레이에 대한 기본 정책을 설정합니다.
+	// 활성 네트워크의 기본값에 따라. 세트 구성 값은 기본값보다 우선합니다.
+	// 선택된 네트워크.
 	relayNonStd := cfg.NetParams().RelayNonStdTxs
 	switch {
 	case cfg.RelayNonStd && cfg.RejectNonStd:
 		str := "%s: rejectnonstd and relaynonstd cannot be used " +
-			"together -- choose only one"
+			"together -- choose only one (Rejectnonstd와 Relaynonstd는 함께 사용할 수 없습니다. -- 하나만 선택하세요)"
 		err := errors.Errorf(str, funcName)
 		fmt.Fprintln(os.Stderr, err)
 		fmt.Fprintln(os.Stderr, usageMessage)
@@ -321,20 +343,25 @@ func LoadConfig() (*Config, error) {
 	cfg.RelayNonStd = relayNonStd
 
 	cfg.AppDir = cleanAndExpandPath(cfg.AppDir)
-	// Append the network type to the app directory so it is "namespaced"
-	// per network.
+	// Append the network type to the app directory so it is "namespaced" per network.
 	// All data is specific to a network, so namespacing the data directory
 	// means each individual piece of serialized data does not have to
 	// worry about changing names per network and such.
+	// 네트워크 유형을 앱 디렉토리에 추가하여 네트워크별로 "네임스페이스"가 되도록 합니다.
+	// 모든 데이터는 네트워크에 따라 다르므로 데이터 디렉터리에 네임스페이스를 지정합니다.
+	// 직렬화된 데이터의 각 개별 조각이 필요하지 않음을 의미합니다.
+	// 네트워크별로 이름을 바꾸는 것에 대해 걱정하세요.
 	cfg.AppDir = filepath.Join(cfg.AppDir, cfg.NetParams().Name)
 
 	// Logs directory is usually under the home directory, unless otherwise specified
+	// 달리 지정하지 않는 한 로그 디렉터리는 일반적으로 홈 디렉터리 아래에 있습니다.
 	if cfg.LogDir == "" {
 		cfg.LogDir = filepath.Join(cfg.AppDir, defaultLogDirname)
 	}
 	cfg.LogDir = cleanAndExpandPath(cfg.LogDir)
 
 	// Special show command to list supported subsystems and exit.
+	// 지원되는 하위 시스템을 나열하고 종료하는 특수 show 명령입니다.
 	if cfg.LogLevel == "show" {
 		fmt.Println("Supported subsystems", logger.SupportedSubsystems())
 		os.Exit(0)
@@ -342,6 +369,8 @@ func LoadConfig() (*Config, error) {
 
 	// Initialize log rotation. After log rotation has been initialized, the
 	// logger variables may be used.
+	// 로그 회전을 초기화합니다. 로그 회전이 초기화된 후
+	// 로거 변수를 사용할 수 있습니다.
 	logger.InitLog(filepath.Join(cfg.LogDir, defaultLogFilename), filepath.Join(cfg.LogDir, defaultErrLogFilename))
 
 	// Parse, validate, and set debug log level(s).
@@ -365,6 +394,7 @@ func LoadConfig() (*Config, error) {
 	}
 
 	// Don't allow ban durations that are too short.
+	// 너무 짧은 차단 기간은 허용하지 마세요.
 	if cfg.BanDuration < time.Second {
 		str := "%s: The banduration option may not be less than 1s -- parsed [%s]"
 		err := errors.Errorf(str, funcName, cfg.BanDuration)
@@ -374,6 +404,7 @@ func LoadConfig() (*Config, error) {
 	}
 
 	// Validate any given whitelisted IP addresses and networks.
+	// 화이트리스트에 있는 모든 IP 주소와 네트워크를 검증합니다.
 	if len(cfg.Whitelists) > 0 {
 		var ip net.IP
 		cfg.Whitelists = make([]*net.IPNet, 0, len(cfg.Flags.Whitelists))
@@ -381,6 +412,7 @@ func LoadConfig() (*Config, error) {
 		for _, addr := range cfg.Flags.Whitelists {
 			_, ipnet, err := net.ParseCIDR(addr)
 			if err != nil {
+				fmt.Printf("★★★★★★★★★★★★★★★★★★★★★★★\nconfig.go 415 line addr:%+v\n★★★★★★★★★★★★★★★★★★★★★★★\n", addr)
 				ip = net.ParseIP(addr)
 				if ip == nil {
 					str := "%s: The whitelist value of '%s' is invalid"
@@ -401,6 +433,7 @@ func LoadConfig() (*Config, error) {
 					Mask: net.CIDRMask(bits, bits),
 				}
 			}
+			fmt.Printf("★★★★★★★★★★★★★★★★★★★★★★★\nconfig.go 436 line cfg.Whitelists:%+v\n★★★★★★★★★★★★★★★★★★★★★★★\n", cfg.Whitelists)
 			cfg.Whitelists = append(cfg.Whitelists, ipnet)
 		}
 	}
