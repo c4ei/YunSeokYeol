@@ -2,6 +2,7 @@ package appmessage
 
 import (
 	"encoding/hex"
+	"fmt"
 	"math/big"
 
 	"github.com/pkg/errors"
@@ -379,7 +380,7 @@ func DomainBlockToRPCBlock(block *externalapi.DomainBlock) *RPCBlock {
 // RPCBlockToDomainBlock은 '블록'을 DomainBlock으로 변환합니다.
 func RPCBlockToDomainBlock(block *RPCBlock) (*externalapi.DomainBlock, error) {
 	parents := make([]externalapi.BlockLevelParents, len(block.Header.Parents))
-	// fmt.Printf("383 domainconverters.go RPCBlockToDomainBlock() block:%+v\n", block)
+	fmt.Printf("383 domainconverters.go RPCBlockToDomainBlock() block:%+v\n", block)
 	for i, blockLevelParents := range block.Header.Parents {
 		parents[i] = make(externalapi.BlockLevelParents, len(blockLevelParents.ParentHashes))
 		for j, parentHash := range blockLevelParents.ParentHashes {

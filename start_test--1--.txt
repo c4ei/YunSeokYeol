@@ -3,16 +3,34 @@ cd /home/dev/coin/prj_kas2c4ex/c4exd
 go install . ./cmd/...
 
 ########### file copy ###########
-cp /home/dev/go/bin/genkeypair /home/dev/coin/prj_kas2c4ex/c4exd/bin
-cp /home/dev/go/bin/c4exwallet /home/dev/coin/prj_kas2c4ex/c4exd/bin
-cp /home/dev/go/bin/c4exd /home/dev/coin/prj_kas2c4ex/c4exd/bin
-cp /home/dev/go/bin/c4exminer /home/dev/coin/prj_kas2c4ex/c4exd/bin
-cp /home/dev/go/bin/c4exctl /home/dev/coin/prj_kas2c4ex/c4exd/bin
+cp /home/dev/go/bin/genkeypair /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exwallet /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exd /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exminer /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exctl /home/dev/coin/prj_kas2c4ex/exe
 
-########### run demon ###########
-cd /home/dev/coin/prj_kas2c4ex/c4exd/bin
+########### run demon org ###########
+cd /home/dev/coin/prj_kas2c4ex/exe
 ./c4exd --utxoindex
+########### run demon ###########
+cd /home/dev/coin/prj_kas2c4ex/exe
+./c4exd
 
 ########### run mining ###########
-cd /home/dev/coin/prj_kas2c4ex/c4exd/bin 
+cd /home/dev/coin/prj_kas2c4ex/exe 
 ./c4exminer --miningaddr c4ex:qrpulvhuszl23dajlnmcwqheacyrw9gzdq0md74mqk68txmmpsc8s47u0mr2c
+
+
+
+
+
+########## test 
+cd /home/dev/coin/prj_kas2c4ex/c4exd
+go install . ./cmd/...
+cp /home/dev/go/bin/genkeypair /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exwallet /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exd /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exminer /home/dev/coin/prj_kas2c4ex/exe
+cp /home/dev/go/bin/c4exctl /home/dev/coin/prj_kas2c4ex/exe
+cd /home/dev/coin/prj_kas2c4ex/exe
+./c4exd

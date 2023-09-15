@@ -125,7 +125,8 @@ func (app *c4exdApp) main(startedChan chan<- struct{}) error {
 	// Create componentManager and start it.
 	componentManager, err := NewComponentManager(app.cfg, databaseContext, interrupt)
 	if err != nil {
-		log.Errorf("Unable to start c4exd: %+v", err)
+		fmt.Printf("##### 128 [app.go] componentManager app.cfg:%+v\n databaseContext:%+v\n interrupt:%+v\n", app.cfg, databaseContext, interrupt)
+		log.Errorf(" [app.go] Unable to start c4exd: %+v", err)
 		return err
 	}
 

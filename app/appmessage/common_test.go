@@ -30,15 +30,15 @@ import (
 // })
 
 // new 58c2d4199e21f910d1571d114969cecef48f09f934d42ccb6a281a15868f2999
-var mainnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
-	0x6e, 0xee, 0xd4, 0x4f, 0x17, 0x0f, 0xa5, 0xec,
-	0xe9, 0x05, 0x51, 0x4c, 0x35, 0x54, 0xb4, 0x05,
-	0x28, 0xc9, 0x65, 0x78, 0x30, 0x0d, 0xf6, 0x1b,
-	0xac, 0xce, 0xa8, 0x47, 0x19, 0x6d, 0x88, 0x3c,
-})
+// var mainnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
+// 	0x6e, 0xee, 0xd4, 0x4f, 0x17, 0x0f, 0xa5, 0xec,
+// 	0xe9, 0x05, 0x51, 0x4c, 0x35, 0x54, 0xb4, 0x05,
+// 	0x28, 0xc9, 0x65, 0x78, 0x30, 0x0d, 0xf6, 0x1b,
+// 	0xac, 0xce, 0xa8, 0x47, 0x19, 0x6d, 0x88, 0x3c,
+// })
 
-// var mainnetGenesisHash = externalapi.NewDomainHashFromString("6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c")
-// var mainnetGenesisMerkleRoot = externalapi.NewDomainHashFromString("196714790b0a9f8bfc072ff7596f10ef4884984e026ead13846a183891952d48")
+var mainnetGenesisHash = externalapi.NewDomainHashFromString("0x6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c")
+var mainnetGenesisMerkleRoot = externalapi.NewDomainHashFromString("196714790b0a9f8bfc072ff7596f10ef4884984e026ead13846a183891952d48")
 
 // simnetGenesisHash is the hash of the first block in the block DAG for the
 // simulation test network.

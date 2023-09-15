@@ -3,6 +3,7 @@ package externalapi
 import (
 	"bytes"
 	"encoding/hex"
+	"fmt"
 
 	"github.com/pkg/errors"
 )
@@ -63,7 +64,7 @@ func NewDomainHashFromString(hashString string) (*DomainHash, error) {
 	if err != nil {
 		return nil, errors.WithStack(err)
 	}
-
+	fmt.Printf("##### 66 /externalapi/hash.go NewDomainHashFromString() hashString:%+v\n", hashString)
 	return NewDomainHashFromByteSlice(hashBytes)
 }
 

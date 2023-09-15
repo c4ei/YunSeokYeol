@@ -69,6 +69,8 @@ func (db *LevelDB) Put(key *database.Key, value []byte) error {
 
 // Get gets the value for the given key. It returns
 // ErrNotFound if the given key does not exist.
+// Get은 주어진 키에 대한 값을 가져옵니다. 그것은 반환
+// 주어진 키가 존재하지 않으면 ErrNotFound입니다.
 func (db *LevelDB) Get(key *database.Key) ([]byte, error) {
 	data, err := db.ldb.Get(key.Bytes(), nil)
 	if err != nil {

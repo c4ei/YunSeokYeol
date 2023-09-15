@@ -47,8 +47,9 @@ func (c *LevelDBCursor) First() bool {
 }
 
 // Seek moves the iterator to the first key/value pair whose key is greater
-// than or equal to the given key. It returns ErrNotFound if such pair does not
-// exist.
+// than or equal to the given key. It returns ErrNotFound if such pair does not exist.
+// Seek는 반복자를 키가 더 큰 첫 번째 키/값 쌍으로 이동합니다.
+// 주어진 키와 같거나 같습니다. 해당 쌍이 없으면 ErrNotFound를 반환합니다.
 func (c *LevelDBCursor) Seek(key *database.Key) error {
 	if c.isClosed {
 		return errors.New("cannot seek a closed cursor")

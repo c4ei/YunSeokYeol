@@ -1,3 +1,11 @@
 
 2023-09-15 15:35:20.081 [ERR] C4XD: Unable to start c4exd: not found
 key 002f72656163686162696c6974792d646174612f6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c not found
+    /home/dev/coin/prj_kas2c4ex/c4exd/infrastructure/db/database/ldb/leveldb.go
+    /home/dev/coin/prj_kas2c4ex/c4exd/infrastructure/db/database/ldb/cursor.go
+
+key 002f72656163686162696c6974792d646174612f6eeed44f170fa5ece905514c3554b40528c96578300df61baccea847196d883c not found
+
+NewDomainHashFromString
+c4exd/domain/consensus/model/externalapi/hash.go
+
