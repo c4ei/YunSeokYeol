@@ -1,0 +1,18 @@
+########### build ###########
+cd /home/dev/coin/prj_kas2c4ex/c4exd
+go install . ./cmd/...
+
+########### file copy ###########
+cp /home/dev/go/bin/genkeypair /home/dev/coin/prj_kas2c4ex/c4exd/bin
+cp /home/dev/go/bin/c4exwallet /home/dev/coin/prj_kas2c4ex/c4exd/bin
+cp /home/dev/go/bin/c4exd /home/dev/coin/prj_kas2c4ex/c4exd/bin
+cp /home/dev/go/bin/c4exminer /home/dev/coin/prj_kas2c4ex/c4exd/bin
+cp /home/dev/go/bin/c4exctl /home/dev/coin/prj_kas2c4ex/c4exd/bin
+
+########### run demon ###########
+cd /home/dev/coin/prj_kas2c4ex/c4exd/bin
+./c4exd --utxoindex
+
+########### run mining ###########
+cd /home/dev/coin/prj_kas2c4ex/c4exd/bin 
+./c4exminer --miningaddr c4ex:qrpulvhuszl23dajlnmcwqheacyrw9gzdq0md74mqk68txmmpsc8s47u0mr2c

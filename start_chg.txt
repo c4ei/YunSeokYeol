@@ -1,7 +1,7 @@
 c4ex-mainnet --> c4ex-mainnet
 https://github.com/c4ei/c4exd/blob/master/infrastructure/network/netadapter/server/grpcserver/protowire/rpc.md
 
-/home/dev/coin/c4exd/domain/dagconfig/params.go
+/home/dev/coin/prj_kas2c4ex/c4exd/domain/dagconfig/params.go
 var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "c4ex-mainnet",
@@ -22,7 +22,7 @@ go mod tidy
 --utxoindex 없이 c4exd가 실행되는 경우 사용할 수 없는 방법
 Method unavailable when c4exd is run without --utxoindex
 
-/home/dev/coin/c4exd/testing/integration/utxo_index_test.go
+/home/dev/coin/prj_kas2c4ex/c4exd/testing/integration/utxo_index_test.go
 harnessParams := &harnessParams{
 	p2pAddress:              p2pAddress1,
 	rpcAddress:              rpcAddress1,
@@ -40,12 +40,12 @@ func TestUTXOIndex(t *testing.T) {
 		miningAddress:           miningAddress1,
 		miningAddressPrivateKey: miningAddress1PrivateKey,
 		utxoIndex:               true,
-/home/dev/coin/c4exd/testing/integration/config_test.go
+/home/dev/coin/prj_kas2c4ex/c4exd/testing/integration/config_test.go
 const rpcAddress1 untyped string = "127.0.0.1:12345"
 miningAddress1           = "c4exsim:qqqqnc0pxg7qw3qkc7l6sge8kfhsvvyt7mkw8uamtndqup27ftnd6c769gn66"
 const miningAddress1PrivateKey untyped string = "0d81045b0deb2af36a25403c2154c87aa82d89dd337b575bae27ce7f5de53cee"
 
-/home/dev/coin/c4exd/domain/consensus/utils/pow/pow.go
+/home/dev/coin/prj_kas2c4ex/c4exd/domain/consensus/utils/pow/pow.go
 
 
 
@@ -59,7 +59,7 @@ dev@devcoin:~/coin/c4exd/bin$ ./c4exd --utxoindex
 2023-08-25 15:36:13.004 [INF] CMGR: Connecting to 122.35.243.20:21001
 2023-08-25 15:36:14.284 [INF] CMGR: 1 addresses found from DNS seed n.dnsseed.c4ei.net
 
-/home/dev/coin/c4exd/app/appmessage/common_test.go
+/home/dev/coin/prj_kas2c4ex/c4exd/app/appmessage/common_test.go
 mainnetGenesisHash
 mainnetGenesisMerkleRoot
-/home/dev/coin/c4exd/infrastructure/network/addressmanager/network.go
+/home/dev/coin/prj_kas2c4ex/c4exd/infrastructure/network/addressmanager/network.go
